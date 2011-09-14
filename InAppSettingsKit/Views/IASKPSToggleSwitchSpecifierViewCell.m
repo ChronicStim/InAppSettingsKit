@@ -16,6 +16,7 @@
 
 #import "IASKPSToggleSwitchSpecifierViewCell.h"
 #import "IASKSwitch.h"
+#import "GeneralCategories.h"
 
 @implementation IASKPSToggleSwitchSpecifierViewCell
 
@@ -25,6 +26,7 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
         // Initialization code
+        [self.label setTextColor:[UIColor cptPrimaryColor]];
     }
     return self;
 }

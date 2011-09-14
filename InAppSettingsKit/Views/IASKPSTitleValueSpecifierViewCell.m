@@ -22,12 +22,16 @@
 
 - (void)layoutSubviews {
 	// left align the value if the title is empty
+    
+    [self.textLabel setTextColor:[UIColor cptPrimaryColor]];
+    [self.detailTextLabel setTextColor:[UIColor blackColor]];
+    [self.detailTextLabel setAdjustsFontSizeToFitWidth:YES];
 	if (!self.textLabel.text.length) {
 		self.textLabel.text = self.detailTextLabel.text;
 		self.detailTextLabel.text = nil;
 		if ([self.reuseIdentifier isEqualToString:kIASKPSMultiValueSpecifier]) {
 			self.textLabel.font = [UIFont systemFontOfSize:[UIFont labelFontSize]];
-			self.textLabel.textColor = self.detailTextLabel.textColor;
+			//self.textLabel.textColor = self.detailTextLabel.textColor;
 		}
 	}
 	[super layoutSubviews];

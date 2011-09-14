@@ -18,6 +18,8 @@
 #import "IASKSpecifier.h"
 #import "IASKSettingsReader.h"
 #import "IASKSettingsStoreUserDefaults.h"
+#import "GeneralCategories.h"
+#import "PainTrackerAppDelegate.h"
 
 #define kCellValue      @"kCellValue"
 
@@ -52,12 +54,22 @@
     return _settingsStore;
 }
 
+-(void)viewDidLoad {
+    
+    [super viewDidLoad];
+    
+    [self.tableView applyDefaultTableViewBackground];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     if (_currentSpecifier) {
         [self setTitle:[_currentSpecifier title]];
         [self updateCheckedItem];
     }
-    
+    PainTrackerAppDelegate *appDelegate = (PainTrackerAppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.navigationItem.titleView = [appDelegate titleBarLabelWithString:self.title];    
+    self.navigationController.navigationBar.tintColor = [UIColor cptPrimaryColor];
+
     if (_tableView) {
         [_tableView reloadData];
 
@@ -83,7 +95,7 @@
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	return YES;
+    return (interfaceOrientation == UIInterfaceOrientationPortrait) || (interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -135,13 +147,47 @@
     return [_currentSpecifier footerText];
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    NSString *footerText = [_currentSpecifier footerText];
+    if (nil != footerText) {
+        UIView *footerView = [[[UIView alloc] init] autorelease];
+        UILabel *footerLabel = [[UILabel alloc] init];
+        [footerLabel setBackgroundColor:[UIColor clearColor]];
+        [footerLabel setNumberOfLines:0];
+        [footerLabel setFont:[UIFont cptNormalFont]];
+        [footerLabel setTextColor:[UIColor whiteColor]];
+        [footerLabel setTextAlignment:UITextAlignmentCenter];
+        CGSize size = [footerText sizeWithFont:[UIFont cptNormalFont] constrainedToSize:CGSizeMake(tableView.frame.size.width - 2*kIASKHorizontalPaddingGroupTitles, INFINITY) lineBreakMode:UILineBreakModeWordWrap];
+        CGRect viewRect = CGRectMake(0, 0, 320, size.height+kIASKVerticalPaddingGroupTitles);
+        CGRect headerRect = CGRectMake(kIASKHorizontalPaddingGroupTitles, 0, size.width, size.height);     
+        [footerView setFrame:viewRect];
+        [footerLabel setFrame:headerRect];
+        [footerLabel setText:footerText];
+        [footerView addSubview:footerLabel];
+        [footerLabel release];
+        
+        return footerView;
+    }
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    NSString *footerText = [_currentSpecifier footerText];
+    if (nil != footerText) {
+        CGSize size = [footerText sizeWithFont:[UIFont cptNormalFont] constrainedToSize:CGSizeMake(tableView.frame.size.width - 2*kIASKHorizontalPaddingGroupTitles, INFINITY) lineBreakMode:UILineBreakModeWordWrap];
+        return size.height+kIASKVerticalPaddingGroupTitles;
+    }
+    return 0;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell   = [tableView dequeueReusableCellWithIdentifier:kCellValue];
     NSArray *titles         = [_currentSpecifier multipleTitles];
 	
     if (!cell) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellValue] autorelease];
-		cell.backgroundColor = [UIColor whiteColor];
     }
 	
 	if ([indexPath isEqual:[self checkedItem]]) {

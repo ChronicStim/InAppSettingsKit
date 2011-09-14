@@ -45,6 +45,13 @@
 	[super dealloc];
 }
 
+-(void)viewDidLoad {
+    
+    [super viewDidLoad];
+    
+    [self applyDefaultViewBackground];
+}
+
 - (void)viewWillAppear:(BOOL)animated {  
 	[webView loadRequest:[NSURLRequest requestWithURL:self.url]];
 }
@@ -52,10 +59,6 @@
 - (void)viewDidUnload {
 	[super viewDidUnload];
 	self.webView = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {

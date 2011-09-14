@@ -92,7 +92,7 @@
 #define kIASKPaddingLeft                      9
 #define kIASKPaddingRight                     10
 #define kIASKHorizontalPaddingGroupTitles     19
-#define kIASKVerticalPaddingGroupTitles       15
+#define kIASKVerticalPaddingGroupTitles       5
 
 #define kIASKLabelFontSize                    17
 #define kIASKgrayBlueColor                    [UIColor colorWithRed:0.318 green:0.4 blue:0.569 alpha:1.0]

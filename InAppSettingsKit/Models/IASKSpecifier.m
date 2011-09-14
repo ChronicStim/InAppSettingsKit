@@ -183,7 +183,7 @@
 
 - (UIKeyboardType)keyboardType {
     if ([[_specifierDict objectForKey:KIASKKeyboardType] isEqualToString:kIASKKeyboardAlphabet]) {
-        return UIKeyboardTypeDefault;
+        return UIKeyboardTypeASCIICapable;
     }
     else if ([[_specifierDict objectForKey:KIASKKeyboardType] isEqualToString:kIASKKeyboardNumbersAndPunctuation]) {
         return UIKeyboardTypeNumbersAndPunctuation;

@@ -17,6 +17,7 @@
 #import "IASKPSTextFieldSpecifierViewCell.h"
 #import "IASKTextField.h"
 #import "IASKSettingsReader.h"
+#import "GeneralCategories.h"
 
 @implementation IASKPSTextFieldSpecifierViewCell
 
@@ -27,6 +28,7 @@
     [super layoutSubviews];
 	CGSize labelSize = [_label sizeThatFits:CGSizeZero];
 	labelSize.width = MIN(labelSize.width, _label.bounds.size.width);
+    [self.label setTextColor:[UIColor cptPrimaryColor]];
 
 	CGRect textFieldFrame = _textField.frame;
 	textFieldFrame.origin.x = _label.frame.origin.x + MAX(kIASKMinLabelWidth, labelSize.width) + kIASKSpacing;
