@@ -801,7 +801,7 @@ CGRect IASKCGRectSwap(CGRect rect);
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
 	self.currentFirstResponder = textField;
 	if ([_tableView indexPathsForVisibleRows].count) {
-		_topmostRowBeforeKeyboardWasShown = (NSIndexPath*)[[_tableView indexPathsForVisibleRows] objectAtIndex:0];
+		_topmostRowBeforeKeyboardWasShown = [(NSIndexPath*)[[_tableView indexPathsForVisibleRows] objectAtIndex:0] retain];
 	} else {
 		// this should never happen
 		_topmostRowBeforeKeyboardWasShown = [NSIndexPath indexPathForRow:0 inSection:0];
