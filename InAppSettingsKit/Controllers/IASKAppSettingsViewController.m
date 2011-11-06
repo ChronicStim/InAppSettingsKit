@@ -861,7 +861,9 @@ CGRect IASKCGRectSwap(CGRect rect);
 
 
 - (void) scrollToOldPosition {
-  [_tableView scrollToRowAtIndexPath:_topmostRowBeforeKeyboardWasShown atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    if (nil != _topmostRowBeforeKeyboardWasShown) {
+        [_tableView scrollToRowAtIndexPath:_topmostRowBeforeKeyboardWasShown atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
 }
 
 - (void)_keyboardWillHide:(NSNotification*)notification {
