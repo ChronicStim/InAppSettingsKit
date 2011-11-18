@@ -17,6 +17,8 @@
 
 #import "MainViewController.h"
 
+#import <MessageUI/MessageUI.h>
+
 #import "IASKSpecifier.h"
 #import "IASKSettingsReader.h"
 
@@ -56,6 +58,27 @@
     [self dismissModalViewControllerAnimated:YES];
 	
 	// your code here to reconfigure the app for changed settings
+}
+
+// optional delegate method for handling mail sending result
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+       
+    if ( error != nil ) {
+        // handle error here
+    }
+    
+    if ( result == MFMailComposeResultSent ) {
+        // your code here to handle this result
+    }
+    else if ( result == MFMailComposeResultCancelled ) {
+        // ...
+    }
+    else if ( result == MFMailComposeResultSaved ) {
+        // ...
+    }
+    else if ( result == MFMailComposeResultFailed ) {
+        // ...
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderForKey:(NSString*)key {
