@@ -61,7 +61,7 @@
 }
 
 @property (nonatomic, assign) IBOutlet id delegate;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) IBOutlet UITableView *theTableView;
 @property (nonatomic, retain) NSIndexPath   *currentIndexPath;
 @property (nonatomic, retain) IASKSettingsReader *settingsReader;
 @property (nonatomic, retain) id<IASKSettingsStore> settingsStore;

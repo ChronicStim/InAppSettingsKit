@@ -43,8 +43,8 @@ CGRect IASKCGRectSwap(CGRect rect);
 
 @interface IASKAppSettingsViewController ()
 @property (nonatomic, retain) NSMutableArray *viewList;
-@property (nonatomic, retain) NSIndexPath *currentIndexPath;
-@property (nonatomic, retain) id currentFirstResponder;
+//@property (nonatomic, retain) NSIndexPath *currentIndexPath;
+//@property (nonatomic, retain) id currentFirstResponder;
 
 - (void)_textChanged:(id)sender;
 - (void)synchronizeSettings;
@@ -55,6 +55,7 @@ CGRect IASKCGRectSwap(CGRect rect);
 
 @synthesize delegate = _delegate;
 @synthesize viewList = _viewList;
+@synthesize theTableView;
 @synthesize currentIndexPath = _currentIndexPath;
 @synthesize settingsReader = _settingsReader;
 @synthesize file = _file;
@@ -92,7 +93,7 @@ CGRect IASKCGRectSwap(CGRect rect);
 		_file = [file copy];
 	}
 	
-    self.tableView.contentOffset = CGPointMake(0, 0);
+    self.theTableView.contentOffset = CGPointMake(0, 0);
 	self.settingsReader = nil; // automatically initializes itself
 }
 
@@ -118,7 +119,7 @@ CGRect IASKCGRectSwap(CGRect rect);
         _showDoneButton = YES;
 		
 		if ([self isPad]) {
-			self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
+			self.theTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
 		}
     }
     return self;
@@ -134,7 +135,7 @@ CGRect IASKCGRectSwap(CGRect rect);
 	_showDoneButton = NO;
 
 	if ([self isPad]) {
-		self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
+		self.theTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
 	}
 }
 
@@ -155,7 +156,7 @@ CGRect IASKCGRectSwap(CGRect rect);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	[self.tableView reloadData];
+	[self.theTableView reloadData];
 
 	self.navigationItem.rightBarButtonItem = nil;
     self.navigationController.delegate = self;
@@ -173,8 +174,8 @@ CGRect IASKCGRectSwap(CGRect rect);
 	if (self.currentIndexPath) {
 		if (animated) {
 			// animate deselection of previously selected row
-			[self.tableView selectRowAtIndexPath:self.currentIndexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
-			[self.tableView deselectRowAtIndexPath:self.currentIndexPath animated:YES];
+			[self.theTableView selectRowAtIndexPath:self.currentIndexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+			[self.theTableView deselectRowAtIndexPath:self.currentIndexPath animated:YES];
 		}
 		self.currentIndexPath = nil;
 	}
@@ -772,7 +773,7 @@ CGRect IASKCGRectSwap(CGRect rect);
 
 - (void)reload {
 	// wait 0.5 sec until UI is available after applicationWillEnterForeground
-	[self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.5];
+	[self.theTableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.5];
 }
 
 #pragma mark CGRect Utility function
