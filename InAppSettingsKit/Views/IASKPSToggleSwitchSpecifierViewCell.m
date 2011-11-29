@@ -26,7 +26,7 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
         // Initialization code
-        [self.label setTextColor:[UIColor cptPrimaryColor]];
+        [_label setTextColor:[UIColor cptPrimaryColor]];
     }
     return self;
 }

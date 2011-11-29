@@ -36,7 +36,6 @@
 
 - (NSString*)mailComposeBody;
 - (UIViewController<MFMailComposeViewControllerDelegate>*)viewControllerForMailComposeView;
-- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error;
 
 - (void)settingsViewController:(IASKAppSettingsViewController*)sender buttonTappedForKey:(NSString*)key;
 @end
@@ -61,7 +60,7 @@
 }
 
 @property (nonatomic, assign) IBOutlet id delegate;
-@property (nonatomic, retain) IBOutlet UITableView *theTableView;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSIndexPath   *currentIndexPath;
 @property (nonatomic, retain) IASKSettingsReader *settingsReader;
 @property (nonatomic, retain) id<IASKSettingsStore> settingsStore;
