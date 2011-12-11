@@ -807,6 +807,7 @@ CGRect IASKCGRectSwap(CGRect rect);
 		_topmostRowBeforeKeyboardWasShown = [NSIndexPath indexPathForRow:0 inSection:0];
 		[textField resignFirstResponder];
 	}
+    [_topmostRowBeforeKeyboardWasShown retain];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
