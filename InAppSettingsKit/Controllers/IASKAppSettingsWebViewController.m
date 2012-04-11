@@ -89,37 +89,39 @@
 			
 			NSArray *params = [queryString componentsSeparatedByString:@"&"];
 			for (NSString *param in params) {
-				NSArray *keyValue = [param componentsSeparatedByString:@"="];
-				if (keyValue.count != 2) {
-					continue;
-				}
-				NSString *key = [[keyValue objectAtIndex:0] lowercaseString];
-				NSString *value = [keyValue objectAtIndex:1];
-				
-				value = [NSString stringWithString:(__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,(__bridge CFStringRef)value,CFSTR(""),kCFStringEncodingUTF8)];
-
-				
-				if ([key isEqualToString:@"subject"]) {
-					[mailViewController setSubject:value];
-				}
-				
-				if ([key isEqualToString:@"body"]) {
-					[mailViewController setMessageBody:value isHTML:NO];
-				}
-				
-				if ([key isEqualToString:@"to"]) {
-					[toRecipients addObjectsFromArray:[value componentsSeparatedByString:@","]];
-				}
-				
-				if ([key isEqualToString:@"cc"]) {
-					NSArray *recipients = [value componentsSeparatedByString:@","];
-					[mailViewController setCcRecipients:recipients];
-				}
-				
-				if ([key isEqualToString:@"bcc"]) {
-					NSArray *recipients = [value componentsSeparatedByString:@","];
-					[mailViewController setBccRecipients:recipients];
-				}
+                @autoreleasepool {
+                    NSArray *keyValue = [param componentsSeparatedByString:@"="];
+                    if (keyValue.count != 2) {
+                        continue;
+                    }
+                    NSString *key = [[keyValue objectAtIndex:0] lowercaseString];
+                    NSString *value = [keyValue objectAtIndex:1];
+                    
+                    value = [NSString stringWithString:(__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,(__bridge CFStringRef)value,CFSTR(""),kCFStringEncodingUTF8)];
+                    
+                    
+                    if ([key isEqualToString:@"subject"]) {
+                        [mailViewController setSubject:value];
+                    }
+                    
+                    if ([key isEqualToString:@"body"]) {
+                        [mailViewController setMessageBody:value isHTML:NO];
+                    }
+                    
+                    if ([key isEqualToString:@"to"]) {
+                        [toRecipients addObjectsFromArray:[value componentsSeparatedByString:@","]];
+                    }
+                    
+                    if ([key isEqualToString:@"cc"]) {
+                        NSArray *recipients = [value componentsSeparatedByString:@","];
+                        [mailViewController setCcRecipients:recipients];
+                    }
+                    
+                    if ([key isEqualToString:@"bcc"]) {
+                        NSArray *recipients = [value componentsSeparatedByString:@","];
+                        [mailViewController setBccRecipients:recipients];
+                    }
+                }
 			}
 		}
 		
