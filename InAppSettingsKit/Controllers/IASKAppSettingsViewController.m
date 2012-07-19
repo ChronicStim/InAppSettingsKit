@@ -32,6 +32,8 @@
 #import "PainTrackerAppDelegate.h"
 #import "CPT_IASKAppSettingsViewController.h"
 
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
 static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
 static const CGFloat MINIMUM_SCROLL_FRACTION = 0.2;
 static const CGFloat MAXIMUM_SCROLL_FRACTION = 0.8;
