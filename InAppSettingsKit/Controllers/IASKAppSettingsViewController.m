@@ -748,9 +748,11 @@ CGRect IASKCGRectSwap(CGRect rect);
             if (vc == nil) {
                 vc = self;
             }
-            
+                        
             mailViewController.mailComposeDelegate = vc;
-            [vc presentModalViewController:mailViewController animated:YES];
+            [vc presentViewController:mailViewController animated:YES completion:^{
+                
+            }];
         } else {
             UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle:NSLocalizedString(@"Mail not configured", @"InAppSettingsKit")
@@ -772,7 +774,9 @@ CGRect IASKCGRectSwap(CGRect rect);
 
 -(void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
     // NOTE: No error handling is done here
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 #pragma mark -
