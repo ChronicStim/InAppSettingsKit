@@ -68,7 +68,7 @@
     }
     PainTrackerAppDelegate *appDelegate = (PainTrackerAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.navigationItem.titleView = [appDelegate titleBarLabelWithString:self.title];    
-    self.navigationController.navigationBar.tintColor = [UIColor cptPrimaryColor];
+    self.navigationController.navigationBar.tintColor = [UIColor cptToolbarTintColor];
 
     if (_tableView) {
         [_tableView reloadData];
