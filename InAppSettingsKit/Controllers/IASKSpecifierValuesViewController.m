@@ -151,12 +151,15 @@
     NSString *footerText = [_currentSpecifier footerText];
     if (nil != footerText) {
         UIView *footerView = [[UIView alloc] init];
-        UILabel *footerLabel = [[UILabel alloc] init];
-        [footerLabel setBackgroundColor:[UIColor clearColor]];
-        [footerLabel setNumberOfLines:0];
-        [footerLabel setFont:[UIFont cptNormalFont]];
-        [footerLabel setTextColor:[UIColor whiteColor]];
-        [footerLabel setTextAlignment:NSTextAlignmentCenter];
+        
+        UITextView *footerTextView = [[UITextView alloc] init];
+        [footerTextView setBackgroundColor:[UIColor clearColor]];
+        [footerTextView setFont:[UIFont cptNormalFont]];
+        [footerTextView setTextColor:[UIColor whiteColor]];
+        [footerTextView setTextAlignment:NSTextAlignmentCenter];
+        [footerTextView setEditable:NO];
+        [footerTextView setDataDetectorTypes:UIDataDetectorTypeLink];
+        [footerTextView setScrollEnabled:NO];
         
         NSString *text = footerText;
         UIFont *font = [UIFont cptNormalFont];
@@ -176,9 +179,11 @@
         CGRect headerRect = CGRectMake(roundf((viewRect.size.width - constraintSize.width)/2), 0, constraintSize.width, testSize.height);
         
         [footerView setFrame:viewRect];
-        [footerLabel setFrame:headerRect];
-        [footerLabel setText:footerText];
-        [footerView addSubview:footerLabel];
+        
+        [footerTextView setFrame:headerRect];
+        [footerTextView setText:footerText];
+        
+        [footerView addSubview:footerTextView];
         
         return footerView;
     }
