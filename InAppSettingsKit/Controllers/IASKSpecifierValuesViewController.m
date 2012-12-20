@@ -58,7 +58,6 @@
     
     [super viewDidLoad];
     
-    [self.tableView applyDefaultTableViewBackground];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,6 +76,7 @@
         [_tableView scrollToRowAtIndexPath:[self checkedItem] atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
     }
 	[super viewWillAppear:animated];
+    [self.tableView applyDefaultTableViewBackground];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -156,10 +156,25 @@
         [footerLabel setNumberOfLines:0];
         [footerLabel setFont:[UIFont cptNormalFont]];
         [footerLabel setTextColor:[UIColor whiteColor]];
-        [footerLabel setTextAlignment:UITextAlignmentCenter];
-        CGSize size = [footerText sizeWithFont:[UIFont cptNormalFont] constrainedToSize:CGSizeMake(tableView.frame.size.width - 2*kIASKHorizontalPaddingGroupTitles, INFINITY) lineBreakMode:UILineBreakModeWordWrap];
-        CGRect viewRect = CGRectMake(0, 0, 320, size.height+kIASKVerticalPaddingGroupTitles);
-        CGRect headerRect = CGRectMake(kIASKHorizontalPaddingGroupTitles, 0, size.width, size.height);     
+        [footerLabel setTextAlignment:NSTextAlignmentCenter];
+        
+        NSString *text = footerText;
+        UIFont *font = [UIFont cptNormalFont];
+        CGSize constraintSize;
+        CGFloat extraVerticalPadding;
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            constraintSize = CGSizeMake(tableView.frame.size.width - 6*kIASKHorizontalPaddingGroupTitles, INFINITY);
+            extraVerticalPadding = kIASKVerticalPaddingGroupTitles;
+        } else {
+            constraintSize = CGSizeMake(tableView.frame.size.width - 2*kIASKHorizontalPaddingGroupTitles, INFINITY);
+            extraVerticalPadding = kIASKVerticalPaddingGroupTitles;
+        }
+        CGSize testSize = [text sizeWithFont:font constrainedToSize:constraintSize lineBreakMode:NSLineBreakByWordWrapping];
+        testSize.height += extraVerticalPadding;
+        
+        CGRect viewRect = CGRectMake(0, 0, tableView.bounds.size.width, testSize.height);
+        CGRect headerRect = CGRectMake(roundf((viewRect.size.width - constraintSize.width)/2), 0, constraintSize.width, testSize.height);
+        
         [footerView setFrame:viewRect];
         [footerLabel setFrame:headerRect];
         [footerLabel setText:footerText];
@@ -174,8 +189,21 @@
 {
     NSString *footerText = [_currentSpecifier footerText];
     if (nil != footerText) {
-        CGSize size = [footerText sizeWithFont:[UIFont cptNormalFont] constrainedToSize:CGSizeMake(tableView.frame.size.width - 2*kIASKHorizontalPaddingGroupTitles, INFINITY) lineBreakMode:UILineBreakModeWordWrap];
-        return size.height+kIASKVerticalPaddingGroupTitles;
+        NSString *text = footerText;
+        UIFont *font = [UIFont cptNormalFont];
+        CGSize constraintSize;
+        CGFloat extraVerticalPadding;
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            constraintSize = CGSizeMake(tableView.frame.size.width - 6*kIASKHorizontalPaddingGroupTitles, INFINITY);
+            extraVerticalPadding = kIASKVerticalPaddingGroupTitles;
+        } else {
+            constraintSize = CGSizeMake(tableView.frame.size.width - 2*kIASKHorizontalPaddingGroupTitles, INFINITY);
+            extraVerticalPadding = kIASKVerticalPaddingGroupTitles;
+        }
+        CGSize testSize = [text sizeWithFont:font constrainedToSize:constraintSize lineBreakMode:NSLineBreakByWordWrapping];
+        testSize.height += extraVerticalPadding;
+
+        return testSize.height;
     }
     return 0;
 }
