@@ -127,7 +127,9 @@
 		
 		[mailViewController setToRecipients:toRecipients];
 
-		[self presentModalViewController:mailViewController animated:YES];
+        [self presentViewController:mailViewController animated:YES completion:^{
+            
+        }];
 		return NO;
 	}
 	
@@ -140,7 +142,10 @@
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
-	[self dismissModalViewControllerAnimated:YES];
+
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 
