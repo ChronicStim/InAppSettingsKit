@@ -71,6 +71,7 @@
 #define kIASKButtonSpecifier                  @"IASKButtonSpecifier"
 #define kIASKMailComposeSpecifier             @"IASKMailComposeSpecifier"
 #define kIASKCustomViewSpecifier              @"IASKCustomViewSpecifier"
+#define kIASKPSFormViewSpecifier              @"PSFormViewSpecifier"
 
 #define kIASKBundleFolder                     @"Settings.bundle"
 #define kIASKBundleFolderAlt                  @"InAppSettings.bundle"

@@ -40,9 +40,6 @@ static const CGFloat MAXIMUM_SCROLL_FRACTION = 0.8;
 
 static NSString *kIASKCredits = @"Powered by InAppSettingsKit"; // Leave this as-is!!!
 
-#define kIASKSpecifierValuesViewControllerIndex       0
-#define kIASKSpecifierChildViewControllerIndex        1
-
 #define kIASKCreditsViewWidth                         285
 
 CGRect IASKCGRectSwap(CGRect rect);

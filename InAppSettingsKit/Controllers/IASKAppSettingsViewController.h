@@ -19,6 +19,9 @@
 
 #import "IASKSettingsStore.h"
 
+#define kIASKSpecifierValuesViewControllerIndex       0
+#define kIASKSpecifierChildViewControllerIndex        1
+
 @class IASKSettingsReader;
 @class IASKAppSettingsViewController;
 @class IASKSpecifier;
