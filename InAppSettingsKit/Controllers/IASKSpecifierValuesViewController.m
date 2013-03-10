@@ -18,8 +18,6 @@
 #import "IASKSpecifier.h"
 #import "IASKSettingsReader.h"
 #import "IASKSettingsStoreUserDefaults.h"
-#import "GeneralCategories.h"
-#import "PainTrackerAppDelegate.h"
 
 #define kCellValue      @"kCellValue"
 
@@ -54,10 +52,15 @@
     return _settingsStore;
 }
 
--(void)viewDidLoad {
+- (void)loadView
+{
+    _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth |
+    UIViewAutoresizingFlexibleHeight;
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
     
-    [super viewDidLoad];
-    
+    self.view = _tableView;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -65,10 +68,7 @@
         [self setTitle:[_currentSpecifier title]];
         [self updateCheckedItem];
     }
-    PainTrackerAppDelegate *appDelegate = (PainTrackerAppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.navigationItem.titleView = [appDelegate titleBarLabelWithString:self.title];    
-    self.navigationController.navigationBar.tintColor = [UIColor cptToolbarTintColor];
-
+    
     if (_tableView) {
         [_tableView reloadData];
 
@@ -76,7 +76,6 @@
         [_tableView scrollToRowAtIndexPath:[self checkedItem] atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
     }
 	[super viewWillAppear:animated];
-    [self.tableView applyDefaultTableViewBackground];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -95,7 +94,7 @@
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait) || (interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
+	return YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -113,11 +112,12 @@
 
 
 - (void)dealloc {
-    _currentSpecifier = nil;
-	_checkedItem = nil;
-	_settingsReader = nil;
-    _settingsStore = nil;
-	_tableView = nil;
+    [_currentSpecifier release], _currentSpecifier = nil;
+	[_checkedItem release], _checkedItem = nil;
+	[_settingsReader release], _settingsReader = nil;
+    [_settingsStore release], _settingsStore = nil;
+	[_tableView release], _tableView = nil;
+    [super dealloc];
 }
 
 
@@ -146,79 +146,12 @@
     return [_currentSpecifier footerText];
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    NSString *footerText = [_currentSpecifier footerText];
-    if (nil != footerText) {
-        UIView *footerView = [[UIView alloc] init];
-        
-        UITextView *footerTextView = [[UITextView alloc] init];
-        [footerTextView setBackgroundColor:[UIColor clearColor]];
-        [footerTextView setFont:[UIFont cptNormalFont]];
-        [footerTextView setTextColor:[UIColor whiteColor]];
-        [footerTextView setTextAlignment:NSTextAlignmentCenter];
-        [footerTextView setEditable:NO];
-        [footerTextView setDataDetectorTypes:UIDataDetectorTypeLink];
-        [footerTextView setScrollEnabled:NO];
-        
-        NSString *text = footerText;
-        UIFont *font = [UIFont cptNormalFont];
-        CGSize constraintSize;
-        CGFloat extraVerticalPadding;
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            constraintSize = CGSizeMake(tableView.frame.size.width - 6*kIASKHorizontalPaddingGroupTitles, INFINITY);
-            extraVerticalPadding = kIASKVerticalPaddingGroupTitles;
-        } else {
-            constraintSize = CGSizeMake(tableView.frame.size.width - 2*kIASKHorizontalPaddingGroupTitles, INFINITY);
-            extraVerticalPadding = kIASKVerticalPaddingGroupTitles;
-        }
-        CGSize testSize = [text sizeWithFont:font constrainedToSize:constraintSize lineBreakMode:NSLineBreakByWordWrapping];
-        testSize.height += extraVerticalPadding;
-        
-        CGRect viewRect = CGRectMake(0, 0, tableView.bounds.size.width, testSize.height);
-        CGRect headerRect = CGRectMake(roundf((viewRect.size.width - constraintSize.width)/2), 0, constraintSize.width, testSize.height);
-        
-        [footerView setFrame:viewRect];
-        
-        [footerTextView setFrame:headerRect];
-        [footerTextView setText:footerText];
-        
-        [footerView addSubview:footerTextView];
-        
-        return footerView;
-    }
-    return nil;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    NSString *footerText = [_currentSpecifier footerText];
-    if (nil != footerText) {
-        NSString *text = footerText;
-        UIFont *font = [UIFont cptNormalFont];
-        CGSize constraintSize;
-        CGFloat extraVerticalPadding;
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            constraintSize = CGSizeMake(tableView.frame.size.width - 6*kIASKHorizontalPaddingGroupTitles, INFINITY);
-            extraVerticalPadding = kIASKVerticalPaddingGroupTitles;
-        } else {
-            constraintSize = CGSizeMake(tableView.frame.size.width - 2*kIASKHorizontalPaddingGroupTitles, INFINITY);
-            extraVerticalPadding = kIASKVerticalPaddingGroupTitles;
-        }
-        CGSize testSize = [text sizeWithFont:font constrainedToSize:constraintSize lineBreakMode:NSLineBreakByWordWrapping];
-        testSize.height += extraVerticalPadding;
-
-        return testSize.height;
-    }
-    return 0;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell   = [tableView dequeueReusableCellWithIdentifier:kCellValue];
     NSArray *titles         = [_currentSpecifier multipleTitles];
 	
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellValue];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellValue] autorelease];
     }
 	
 	if ([indexPath isEqual:[self checkedItem]]) {
@@ -256,16 +189,21 @@
                                                                                            forKey:[_currentSpecifier key]]];
 }
 
+- (CGSize)contentSizeForViewInPopover {
+    return [[self view] sizeThatFits:CGSizeMake(320, 2000)];
+}
+
+
 #pragma mark Notifications
 
 - (void)userDefaultsDidChange {
-	NSIndexPath *oldCheckedItem = self.checkedItem;
+	NSIndexPath *oldCheckedItem = [[self.checkedItem retain] autorelease];
 	if(_currentSpecifier) {
 		[self updateCheckedItem];
 	}
 	
 	// only reload the table if it had changed; prevents animation cancellation
-	if (self.checkedItem != oldCheckedItem) {
+	if (![self.checkedItem isEqual:oldCheckedItem]) {
 		[_tableView reloadData];
 	}
 }

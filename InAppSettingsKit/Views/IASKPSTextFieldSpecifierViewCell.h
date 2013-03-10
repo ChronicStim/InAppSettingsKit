@@ -19,11 +19,9 @@
 @class IASKTextField;
 
 @interface IASKPSTextFieldSpecifierViewCell : UITableViewCell {
-    UILabel *__unsafe_unretained _label;
-    IASKTextField *__unsafe_unretained _textField;
+    IASKTextField *_textField;
 }
 
-@property (nonatomic, unsafe_unretained) IBOutlet UILabel *label;
-@property (nonatomic, unsafe_unretained) IBOutlet IASKTextField *textField;
+@property (nonatomic, assign) IASKTextField *textField;
 
 @end

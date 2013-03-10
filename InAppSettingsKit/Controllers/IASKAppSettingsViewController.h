@@ -6,9 +6,9 @@
 //  Luc Vandal, Edovia Inc., http://www.edovia.com
 //  Ortwin Gentz, FutureTap GmbH, http://www.futuretap.com
 //  All rights reserved.
-// 
-//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz, 
-//  as the original authors of this code. You can give credit in a blog post, a tweet or on 
+//
+//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz,
+//  as the original authors of this code. You can give credit in a blog post, a tweet or on
 //  a info page of your app. Also, the original authors appreciate letting them know if you use this code.
 //
 //  This code is licensed under the BSD license that is available at: http://www.opensource.org/licenses/bsd-license.php
@@ -18,66 +18,73 @@
 #import <MessageUI/MessageUI.h>
 
 #import "IASKSettingsStore.h"
-
-#define kIASKSpecifierValuesViewControllerIndex       0
-#define kIASKSpecifierChildViewControllerIndex        1
+#import "IASKViewController.h"
+#import "IASKSpecifier.h"
 
 @class IASKSettingsReader;
 @class IASKAppSettingsViewController;
-@class IASKSpecifier;
 
 @protocol IASKSettingsDelegate
 - (void)settingsViewControllerDidEnd:(IASKAppSettingsViewController*)sender;
-@optional
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderForKey:(NSString*)key;
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderForKey:(NSString*)key;
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderText:(NSString *)headerText forKey:(NSString*)key;
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderText:(NSString *)headerText forKey:(NSString*)key;
 
+@optional
+#pragma mark - UITableView header customization
+- (CGFloat) settingsViewController:(id<IASKViewController>)settingsViewController
+                         tableView:(UITableView *)tableView
+         heightForHeaderForSection:(NSInteger)section;
+- (UIView *) settingsViewController:(id<IASKViewController>)settingsViewController
+                          tableView:(UITableView *)tableView
+            viewForHeaderForSection:(NSInteger)section;
+
+#pragma mark - UITableView cell customization
 - (CGFloat)tableView:(UITableView*)tableView heightForSpecifier:(IASKSpecifier*)specifier;
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForSpecifier:(IASKSpecifier*)specifier;
 
-- (NSString*)mailComposeBody;
-- (UIViewController<MFMailComposeViewControllerDelegate>*)viewControllerForMailComposeView;
+#pragma mark - mail composing customization
+- (NSString*) settingsViewController:(id<IASKViewController>)settingsViewController
+         mailComposeBodyForSpecifier:(IASKSpecifier*) specifier;
 
-- (void)settingsViewController:(IASKAppSettingsViewController*)sender buttonTappedForKey:(NSString*)key;
+- (UIViewController<MFMailComposeViewControllerDelegate>*) settingsViewController:(id<IASKViewController>)settingsViewController
+                                     viewControllerForMailComposeViewForSpecifier:(IASKSpecifier*) specifier;
+
+- (void) settingsViewController:(id<IASKViewController>) settingsViewController
+          mailComposeController:(MFMailComposeViewController*)controller
+            didFinishWithResult:(MFMailComposeResult)result
+                          error:(NSError*)error;
+
+#pragma mark - respond to button taps
+- (void)settingsViewController:(IASKAppSettingsViewController*)sender buttonTappedForKey:(NSString*)key __attribute__((deprecated)); // use the method below with specifier instead
+- (void)settingsViewController:(IASKAppSettingsViewController*)sender buttonTappedForSpecifier:(IASKSpecifier*)specifier;
+- (void)settingsViewController:(IASKAppSettingsViewController*)sender tableView:(UITableView *)tableView didSelectCustomViewSpecifier:(IASKSpecifier*)specifier;
 @end
 
 
-@interface IASKAppSettingsViewController : UIViewController <UITextFieldDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
-	id<IASKSettingsDelegate>  __unsafe_unretained _delegate;
-    UITableView    			*_tableView;
+@interface IASKAppSettingsViewController : UITableViewController <IASKViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate> {
+    id<IASKSettingsDelegate>  _delegate;
     
     NSMutableArray          *_viewList;
-    NSIndexPath             *_currentIndexPath;
-	NSIndexPath				*_topmostRowBeforeKeyboardWasShown;
-	
-	IASKSettingsReader		*_settingsReader;
+    
+    IASKSettingsReader		*_settingsReader;
     id<IASKSettingsStore>  _settingsStore;
-	NSString				*_file;
-	
-	id                      _currentFirstResponder;
+    NSString				*_file;
+    
+    id                      _currentFirstResponder;
     
     BOOL                    _showCreditsFooter;
     BOOL                    _showDoneButton;
+    
+    NSSet                   *_hiddenKeys;
 }
 
-@property (nonatomic, unsafe_unretained) IBOutlet id delegate;
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSIndexPath   *currentIndexPath;
-@property (nonatomic, strong) IASKSettingsReader *settingsReader;
-@property (nonatomic, strong) id<IASKSettingsStore> settingsStore;
+@property (nonatomic, assign) IBOutlet id delegate;
 @property (nonatomic, copy) NSString *file;
-@property (nonatomic, strong) id currentFirstResponder;
 @property (nonatomic, assign) BOOL showCreditsFooter;
 @property (nonatomic, assign) BOOL showDoneButton;
+@property (nonatomic, retain) NSSet *hiddenKeys;
 
 - (void)synchronizeSettings;
-- (IBAction)dismiss:(id)sender;
+- (void)dismiss:(id)sender;
+- (void)setHiddenKeys:(NSSet*)hiddenKeys animated:(BOOL)animated;
+- (UITableViewCell*)newCellForIdentifier:(NSString*)identifier;
 
-// subclassing: optionally override these methods to customize appearance and functionality
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath;
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
-- (UIView *)tableView:(UITableView*)tableView viewForHeaderInSection:(NSInteger)section;
 @end

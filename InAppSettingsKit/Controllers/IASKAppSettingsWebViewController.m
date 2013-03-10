@@ -22,33 +22,35 @@
 @synthesize webView;
 
 - (id)initWithFile:(NSString*)urlString key:(NSString*)key {
-	if (!(self = [super initWithNibName:nil bundle:nil])) {
-		return nil;
-	}
-	
-	self.url = [NSURL URLWithString:urlString];
-	if (!self.url || ![self.url scheme]) {
-		NSString *path = [[NSBundle mainBundle] pathForResource:[urlString stringByDeletingPathExtension] ofType:[urlString pathExtension]];
-		if(path)
-			self.url = [NSURL fileURLWithPath:path];
-		else
-			self.url = nil;
-	}
-	return self;
+    self = [super init];
+    if (self) {
+        self.url = [NSURL URLWithString:urlString];
+        if (!self.url || ![self.url scheme]) {
+            NSString *path = [[NSBundle mainBundle] pathForResource:[urlString stringByDeletingPathExtension] ofType:[urlString pathExtension]];
+            if(path)
+                self.url = [NSURL fileURLWithPath:path];
+            else
+                self.url = nil;
+        }
+    }
+    return self;
 }
 
+- (void)loadView
+{
+    webView = [[UIWebView alloc] init];
+    webView.autoresizingMask = UIViewAutoresizingFlexibleWidth |
+    UIViewAutoresizingFlexibleHeight;
+    webView.delegate = self;
+    
+    self.view = webView;
+}
 
 - (void)dealloc {
-	webView = nil;
-	url = nil;
+	[webView release], webView = nil;
+	[url release], url = nil;
 	
-}
-
--(void)viewDidLoad {
-    
-    [super viewDidLoad];
-    
-    [self applyDefaultViewBackground];
+	[super dealloc];
 }
 
 - (void)viewWillAppear:(BOOL)animated {  
@@ -58,6 +60,10 @@
 - (void)viewDidUnload {
 	[super viewDidUnload];
 	self.webView = nil;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
@@ -89,47 +95,59 @@
 			
 			NSArray *params = [queryString componentsSeparatedByString:@"&"];
 			for (NSString *param in params) {
-                @autoreleasepool {
-                    NSArray *keyValue = [param componentsSeparatedByString:@"="];
-                    if (keyValue.count != 2) {
-                        continue;
-                    }
-                    NSString *key = [[keyValue objectAtIndex:0] lowercaseString];
-                    NSString *value = [keyValue objectAtIndex:1];
-                    
-                    value = [NSString stringWithString:(__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,(__bridge CFStringRef)value,CFSTR(""),kCFStringEncodingUTF8)];
-                    
-                    
-                    if ([key isEqualToString:@"subject"]) {
-                        [mailViewController setSubject:value];
-                    }
-                    
-                    if ([key isEqualToString:@"body"]) {
-                        [mailViewController setMessageBody:value isHTML:NO];
-                    }
-                    
-                    if ([key isEqualToString:@"to"]) {
-                        [toRecipients addObjectsFromArray:[value componentsSeparatedByString:@","]];
-                    }
-                    
-                    if ([key isEqualToString:@"cc"]) {
-                        NSArray *recipients = [value componentsSeparatedByString:@","];
-                        [mailViewController setCcRecipients:recipients];
-                    }
-                    
-                    if ([key isEqualToString:@"bcc"]) {
-                        NSArray *recipients = [value componentsSeparatedByString:@","];
-                        [mailViewController setBccRecipients:recipients];
-                    }
-                }
+				NSArray *keyValue = [param componentsSeparatedByString:@"="];
+				if (keyValue.count != 2) {
+					continue;
+				}
+				NSString *key = [[keyValue objectAtIndex:0] lowercaseString];
+				NSString *value = [keyValue objectAtIndex:1];
+				
+				value =  (NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,
+																							 (CFStringRef)value,
+																							 CFSTR(""),
+																							 kCFStringEncodingUTF8);
+				[value autorelease];
+				
+				if ([key isEqualToString:@"subject"]) {
+					[mailViewController setSubject:value];
+				}
+				
+				if ([key isEqualToString:@"body"]) {
+					[mailViewController setMessageBody:value isHTML:NO];
+				}
+				
+				if ([key isEqualToString:@"to"]) {
+					[toRecipients addObjectsFromArray:[value componentsSeparatedByString:@","]];
+				}
+				
+				if ([key isEqualToString:@"cc"]) {
+					NSArray *recipients = [value componentsSeparatedByString:@","];
+					[mailViewController setCcRecipients:recipients];
+				}
+				
+				if ([key isEqualToString:@"bcc"]) {
+					NSArray *recipients = [value componentsSeparatedByString:@","];
+					[mailViewController setBccRecipients:recipients];
+				}
 			}
 		}
 		
 		[mailViewController setToRecipients:toRecipients];
-
-        [self presentViewController:mailViewController animated:YES completion:^{
-            
-        }];
+    
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 50000)
+//#pragma message "Now that we're iOS5 and up, remove this workaround"
+#endif
+    if([self respondsToSelector:@selector(presentViewController:animated:completion:)]) {
+        [self presentViewController:mailViewController
+                           animated:YES
+                         completion:nil];
+    } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        [self presentModalViewController:mailViewController animated:YES];
+#pragma clang diagnostic pop
+    }
+		[mailViewController release];
 		return NO;
 	}
 	
@@ -142,10 +160,19 @@
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 50000)
+//#pragma message "Now that we're iOS5 and up, remove this workaround"
+#endif
+    if([self respondsToSelector:@selector(dismissViewControllerAnimated:completion:)]) {
+        [self dismissViewControllerAnimated:YES
+                                 completion:nil];
+    } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        [self dismissModalViewControllerAnimated:YES];
+#pragma clang diagnostic pop
 
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+    }
 }
 
 

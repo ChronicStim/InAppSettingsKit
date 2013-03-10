@@ -6,9 +6,9 @@
 //  Luc Vandal, Edovia Inc., http://www.edovia.com
 //  Ortwin Gentz, FutureTap GmbH, http://www.futuretap.com
 //  All rights reserved.
-// 
-//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz, 
-//  as the original authors of this code. You can give credit in a blog post, a tweet or on 
+//
+//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz,
+//  as the original authors of this code. You can give credit in a blog post, a tweet or on
 //  a info page of your app. Also, the original authors appreciate letting them know if you use this code.
 //
 //  This code is licensed under the BSD license that is available at: http://www.opensource.org/licenses/bsd-license.php
@@ -22,10 +22,10 @@
 @interface IASKSpecifier : NSObject {
     NSDictionary    *_specifierDict;
     NSDictionary    *_multipleValuesDict;
-	IASKSettingsReader *__unsafe_unretained _settingsReader;
+    IASKSettingsReader *_settingsReader;
 }
-@property (nonatomic, strong) NSDictionary  *specifierDict;
-@property (nonatomic, unsafe_unretained) IASKSettingsReader *settingsReader;
+@property (nonatomic, retain) NSDictionary  *specifierDict;
+@property (nonatomic, assign) IASKSettingsReader *settingsReader;
 
 - (id)initWithSpecifier:(NSDictionary*)specifier;
 - (NSString*)localizedObjectForKey:(NSString*)key;
@@ -55,5 +55,8 @@
 - (SEL)viewControllerSelector;
 -(Class)buttonClass;
 -(SEL)buttonAction;
-	
+- (UIImage *)cellImage;
+- (UIImage *)highlightedCellImage;
+- (BOOL)adjustsFontSizeToFitWidth;
+- (UITextAlignment)textAlignment;
 @end
