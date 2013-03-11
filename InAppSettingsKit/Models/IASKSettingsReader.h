@@ -78,6 +78,7 @@
 #define kIASKPSTitleValueSpecifier            @"PSTitleValueSpecifier"
 #define kIASKPSTextFieldSpecifier             @"PSTextFieldSpecifier"
 #define kIASKPSChildPaneSpecifier             @"PSChildPaneSpecifier"
+#define kIASKPSFormViewSpecifier              @"PSFormViewSpecifier"
 #define kIASKOpenURLSpecifier                 @"IASKOpenURLSpecifier"
 #define kIASKButtonSpecifier                  @"IASKButtonSpecifier"
 #define kIASKMailComposeSpecifier             @"IASKMailComposeSpecifier"
