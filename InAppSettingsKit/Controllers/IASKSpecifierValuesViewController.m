@@ -22,7 +22,6 @@
 #define kCellValue      @"kCellValue"
 
 @interface IASKSpecifierValuesViewController()
-- (void)userDefaultsDidChange;
 @end
 
 @implementation IASKSpecifierValuesViewController
@@ -75,6 +74,7 @@
 		// Make sure the currently checked item is visible
         [_tableView scrollToRowAtIndexPath:[self checkedItem] atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
     }
+
 	[super viewWillAppear:animated];
 }
 

@@ -33,4 +33,6 @@
 @property (nonatomic, retain) NSIndexPath *checkedItem;
 @property (nonatomic, retain) IASKSpecifier *currentSpecifier;
 
+- (void)userDefaultsDidChange;
+
 @end
