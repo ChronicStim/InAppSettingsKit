@@ -22,6 +22,9 @@
 @synthesize key=_key;
 
 - (void)dealloc {
+    
+    [super dealloc];
+    
     _key = nil;
 	
 }
