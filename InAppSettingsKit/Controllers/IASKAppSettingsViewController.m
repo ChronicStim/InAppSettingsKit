@@ -304,7 +304,7 @@ CGRect IASKCGRectSwap(CGRect rect);
                 }
             }
             
-            UITableViewRowAnimation animation = animated ? UITableViewRowAnimationTop : UITableViewRowAnimationNone;
+            UITableViewRowAnimation animation = animated ? UITableViewRowAnimationFade : UITableViewRowAnimationNone;
             [self.tableView deleteSections:hideSections withRowAnimation:animation];
             [self.tableView deleteRowsAtIndexPaths:hideIndexPaths withRowAnimation:animation];
             [self.tableView insertSections:showSections withRowAnimation:animation];
@@ -500,6 +500,7 @@ CGRect IASKCGRectSwap(CGRect rect);
 	if ([specifier.type isEqualToString:kIASKCustomViewSpecifier] && [self.delegate respondsToSelector:@selector(tableView:cellForSpecifier:)]) {
 		UITableViewCell* cell = [self.delegate tableView:tableView cellForSpecifier:specifier];
 		assert(nil != cell && "delegate must return a UITableViewCell for custom cell types");
+        [cell addGradientBackgroundForCellInTableView:tableView atIndexPath:indexPath];
 		return cell;
 	}
 	
