@@ -41,7 +41,6 @@ static NSString *kIASKCredits = @"Powered by InAppSettingsKit"; // Leave this as
 CGRect IASKCGRectSwap(CGRect rect);
 
 @interface IASKAppSettingsViewController ()
-@property (nonatomic, retain) NSMutableArray *viewList;
 @property (nonatomic, retain) id currentFirstResponder;
 
 - (void)_textChanged:(id)sender;
