@@ -179,7 +179,7 @@ CGRect IASKCGRectSwap(CGRect rect);
 		UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
 																					target:self 
 																					action:@selector(dismiss:)];
-		self.navigationItem.rightBarButtonItem = buttonItem;
+        [self.navigationItem setRightBarButtonWithNegativeSpace:buttonItem];
 		[buttonItem release];
 	} 
 	if (!self.title) {
