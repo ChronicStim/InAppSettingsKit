@@ -17,10 +17,8 @@
 #import <UIKit/UIKit.h>
 
 
-@interface IASKTextField : UITextField {
-    NSString *_key;
-}
+@interface IASKTextField : UITextField
 
-@property (nonatomic, strong) NSString *key;
+@property (nonatomic, copy) NSString *key;
 
 @end

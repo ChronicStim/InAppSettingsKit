@@ -21,30 +21,19 @@
     NSMutableDictionary * _dict;
 }
 
-@property (nonatomic, retain, readwrite) NSString* filePath;
-
 @end
 
 @implementation IASKSettingsStoreFile
 
 - (id)initWithPath:(NSString*)path {
     if((self = [super init])) {
-        _filePath = path;
+        _filePath = [path copy];
         _dict = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
         if(_dict == nil) {
             _dict = [[NSMutableDictionary alloc] init];
         }
     }
     return self;
-}
-
-- (void)dealloc {
-    
-    [super dealloc];
-    
-    _dict = nil;
-    _filePath = nil;
-
 }
 
 - (void)setObject:(id)value forKey:(NSString *)key {

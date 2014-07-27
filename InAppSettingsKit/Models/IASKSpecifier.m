@@ -16,17 +16,15 @@
 
 #import "IASKSpecifier.h"
 #import "IASKSettingsReader.h"
+#import "IASKAppSettingsWebViewController.h"
 
 @interface IASKSpecifier ()
-@property (nonatomic, strong) NSDictionary  *multipleValuesDict;
-- (void)_reinterpretValues:(NSDictionary*)specifierDict;
+
+@property (nonatomic, retain) NSDictionary  *multipleValuesDict;
+
 @end
 
 @implementation IASKSpecifier
-
-@synthesize specifierDict=_specifierDict;
-@synthesize multipleValuesDict=_multipleValuesDict;
-@synthesize settingsReader = _settingsReader;
 
 - (id)initWithSpecifier:(NSDictionary*)specifier {
     if ((self = [super init])) {
@@ -40,22 +38,11 @@
     return self;
 }
 
-- (void)dealloc {
-    
-    [super dealloc];
-    
-    _specifierDict = nil;
-    _multipleValuesDict = nil;
-	
-	_settingsReader = nil;
-
-}
-
 - (void)_reinterpretValues:(NSDictionary*)specifierDict {
     NSArray *values = [_specifierDict objectForKey:kIASKValues];
     NSArray *titles = [_specifierDict objectForKey:kIASKTitles];
-    
-    NSMutableDictionary *multipleValuesDict = [[NSMutableDictionary alloc] init];
+    NSArray *shortTitles = [_specifierDict objectForKey:kIASKShortTitles];
+    NSMutableDictionary *multipleValuesDict = [NSMutableDictionary new];
     
     if (values) {
 		[multipleValuesDict setObject:values forKey:kIASKValues];
@@ -65,10 +52,15 @@
 		[multipleValuesDict setObject:titles forKey:kIASKTitles];
 	}
     
+    if (shortTitles) {
+		[multipleValuesDict setObject:shortTitles forKey:kIASKShortTitles];
+	}
+    
     [self setMultipleValuesDict:multipleValuesDict];
 }
 - (NSString*)localizedObjectForKey:(NSString*)key {
-	return [self.settingsReader titleForStringId:[_specifierDict objectForKey:key]];
+	IASKSettingsReader *settingsReader = self.settingsReader;
+	return [settingsReader titleForStringId:[_specifierDict objectForKey:key]];
 }
 
 - (NSString*)title {
@@ -79,19 +71,28 @@
     return [self localizedObjectForKey:kIASKFooterText];
 }
 
--(Class) viewControllerClass {
+- (Class)viewControllerClass {
+	[IASKAppSettingsWebViewController class]; // make sure this is linked into the binary/library
     return NSClassFromString([_specifierDict objectForKey:kIASKViewControllerClass]);
 }
 
--(SEL) viewControllerSelector {
+- (SEL)viewControllerSelector {
     return NSSelectorFromString([_specifierDict objectForKey:kIASKViewControllerSelector]);
 }
 
--(Class)buttonClass {
+- (NSString*)viewControllerStoryBoardFile {
+	return [_specifierDict objectForKey:kIASKViewControllerStoryBoardFile];
+}
+
+- (NSString*)viewControllerStoryBoardID {
+	return [_specifierDict objectForKey:kIASKViewControllerStoryBoardId];
+}
+
+- (Class)buttonClass {
     return NSClassFromString([_specifierDict objectForKey:kIASKButtonClass]);
 }
 
--(SEL)buttonAction {
+- (SEL)buttonAction {
     return NSSelectorFromString([_specifierDict objectForKey:kIASKButtonAction]);
 }
 
@@ -105,7 +106,10 @@
 
 - (NSString*)titleForCurrentValue:(id)currentValue {
 	NSArray *values = [self multipleValues];
-	NSArray *titles = [self multipleTitles];
+	NSArray *titles = [self multipleShortTitles];
+    if (!titles)
+        titles = [self multipleTitles];
+
 	if (values.count != titles.count) {
 		return nil;
 	}
@@ -114,7 +118,8 @@
 		return nil;
 	}
 	@try {
-		return [self.settingsReader titleForStringId:[titles objectAtIndex:keyIndex]];
+		IASKSettingsReader *strongSettingsReader = self.settingsReader;
+		return [strongSettingsReader titleForStringId:[titles objectAtIndex:keyIndex]];
 	}
 	@catch (NSException * e) {}
 	return nil;
@@ -130,6 +135,10 @@
 
 - (NSArray*)multipleTitles {
     return [_multipleValuesDict objectForKey:kIASKTitles];
+}
+
+- (NSArray*)multipleShortTitles {
+    return [_multipleValuesDict objectForKey:kIASKShortTitles];
 }
 
 - (NSString*)file {
@@ -203,12 +212,7 @@
         return UIKeyboardTypeASCIICapable;
     }
     else if ([[_specifierDict objectForKey:KIASKKeyboardType] isEqualToString:kIASKKeyboardDecimalPad]) {
-		if (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iPhoneOS_4_1) {
-			return UIKeyboardTypeDecimalPad;
-		}
-		else {
-			return UIKeyboardTypeNumbersAndPunctuation;
-		}
+		return UIKeyboardTypeDecimalPad;
     }
     else if ([[_specifierDict objectForKey:KIASKKeyboardType] isEqualToString:KIASKKeyboardURL]) {
         return UIKeyboardTypeURL;
@@ -250,12 +254,20 @@
 
 - (UIImage *)cellImage
 {
-    return [UIImage imageNamed:[_specifierDict objectForKey:kIASKCellImage]];
+    NSString *imageName = [_specifierDict objectForKey:kIASKCellImage];
+    if( imageName.length == 0 )
+        return nil;
+    
+    return [UIImage imageNamed:imageName];
 }
 
 - (UIImage *)highlightedCellImage
 {
-    return [UIImage imageNamed:[[_specifierDict objectForKey:kIASKCellImage ] stringByAppendingString:@"Highlighted"]];
+    NSString *imageName = [[_specifierDict objectForKey:kIASKCellImage ] stringByAppendingString:@"Highlighted"];
+    if( imageName.length == 0 )
+        return nil;
+
+    return [UIImage imageNamed:imageName];
 }
 
 - (BOOL)adjustsFontSizeToFitWidth {
@@ -263,7 +275,7 @@
 	return !boxedResult || [boxedResult boolValue];
 }
 
-- (UITextAlignment)textAlignment
+- (NSTextAlignment)textAlignment
 {
     if ([[_specifierDict objectForKey:kIASKTextLabelAlignment] isEqualToString:kIASKTextLabelAlignmentLeft]) {
         return NSTextAlignmentLeft;
@@ -278,5 +290,9 @@
 		return NSTextAlignmentRight;
 	}
 	return NSTextAlignmentLeft;
+}
+
+- (id)valueForKey:(NSString *)key {
+	return [_specifierDict objectForKey:key];
 }
 @end

@@ -17,10 +17,8 @@
 #import <UIKit/UIKit.h>
 
 
-@interface IASKSlider : UISlider {
-    NSString *_key;
-}
+@interface IASKSlider : UISlider
 
-@property (nonatomic, strong) NSString *key;
+@property (nonatomic, copy) NSString *key;
 
 @end

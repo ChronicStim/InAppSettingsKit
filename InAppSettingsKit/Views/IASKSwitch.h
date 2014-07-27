@@ -17,10 +17,9 @@
 #import <UIKit/UIKit.h>
 #import "DCRoundSwitch.h"
 
-@interface IASKSwitch : DCRoundSwitch {
-    NSString *_key;
-}
 
-@property (nonatomic, strong) NSString *key;
+@interface IASKSwitch : UISwitch
+
+@property (nonatomic, copy) NSString *key;
 
 @end
