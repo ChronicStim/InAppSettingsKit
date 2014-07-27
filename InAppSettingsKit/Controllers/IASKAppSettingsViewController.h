@@ -60,6 +60,10 @@
 
 
 @interface IASKAppSettingsViewController : UITableViewController <IASKViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate>
+{
+    __weak UIViewController *_currentChildViewController;
+    BOOL _reloadDisabled;
+}
 
 @property (nonatomic, assign) IBOutlet id delegate;
 @property (nonatomic, copy) NSString *file;

@@ -45,8 +45,6 @@ CGRect IASKCGRectSwap(CGRect rect);
     id<IASKSettingsStore>  _settingsStore;
     
     id                      _currentFirstResponder;
-    __weak UIViewController *_currentChildViewController;
-    BOOL _reloadDisabled;
 }
 
 @property (nonatomic, strong) id currentFirstResponder;
@@ -116,7 +114,7 @@ CGRect IASKCGRectSwap(CGRect rect);
         _reloadDisabled = NO;
         _showDoneButton = YES;
         // If set to YES, will display credits for InAppSettingsKit creators
-        _showCreditsFooter = YES;
+        _showCreditsFooter = NO;
     }
     return self;
 }
@@ -482,7 +480,7 @@ CGRect IASKCGRectSwap(CGRect rect);
 	if ([specifier.type isEqualToString:kIASKCustomViewSpecifier] && [self.delegate respondsToSelector:@selector(tableView:cellForSpecifier:)]) {
 		UITableViewCell* cell = [self.delegate tableView:tableView cellForSpecifier:specifier];
 		assert(nil != cell && "delegate must return a UITableViewCell for custom cell types");
-        [cell addGradientBackgroundForCellInTableView:tableView atIndexPath:indexPath];
+//        [cell addGradientBackgroundForCellInTableView:tableView atIndexPath:indexPath];
 		return cell;
 	}
 	

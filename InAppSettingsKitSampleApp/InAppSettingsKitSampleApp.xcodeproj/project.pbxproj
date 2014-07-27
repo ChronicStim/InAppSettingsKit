@@ -18,7 +18,6 @@
 		6A9BBF591148F1DA003D97FA /* 20-gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A9BBF581148F1DA003D97FA /* 20-gear2.png */; };
 		AA092DC815B73A0500081FBC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA092DC215B73A0500081FBC /* Localizable.strings */; };
 		AA092DC915B73A0500081FBC /* settings_about.html in Resources */ = {isa = PBXBuildFile; fileRef = AA092DC415B73A0500081FBC /* settings_about.html */; };
-		AA092DD115B73A0C00081FBC /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA092DC615B73A0500081FBC /* MainWindow.xib */; };
 		AA092DD415B73A1100081FBC /* 20-gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A9BBF581148F1DA003D97FA /* 20-gear2.png */; };
 		AA092DD515B73A1100081FBC /* 20-gear2Highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA53E8E15B057FD00C6558B /* 20-gear2Highlighted.png */; };
 		AA21CF1D15B7394C008F9369 /* 20-gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A9BBF581148F1DA003D97FA /* 20-gear2.png */; };
@@ -54,7 +53,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* InAppSettingsKitSampleAppAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppSettingsKitSampleAppAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* InAppSettingsKitSampleAppAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppSettingsKitSampleAppAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* In App Settings Kit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "In App Settings Kit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* In App Settings Kit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "In App Settings Kit.app"; path = "/Users/wkutschke/Documents/Development/Repositories/Chronic Pain Tracker/InAppSettingsKit/InAppSettingsKitSampleApp/build/Debug-iphoneos/In App Settings Kit.app"; sourceTree = "<absolute>"; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765580DF743DE002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		289233A80DB2D0DB0083E9F9 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Classes/MainViewController.h; sourceTree = "<group>"; };
@@ -67,12 +66,9 @@
 		8D1107310486CEB800E47090 /* InAppSettingsKitSampleApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "InAppSettingsKitSampleApp-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		AA092DC315B73A0500081FBC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AA092DC515B73A0500081FBC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/settings_about.html; sourceTree = "<group>"; };
-		AA092DC715B73A0500081FBC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		AA092DCC15B73A0C00081FBC /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AA092DCD15B73A0C00081FBC /* de */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = de; path = de.lproj/settings_about.html; sourceTree = "<group>"; };
 		AA092DD215B73A1100081FBC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		AA092DD815B73C4700081FBC /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		AA092DD915B73C4900081FBC /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		AA8746C5128B02B600CACD4C /* IASKSettingsStoreUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = IASKSettingsStoreUserDefaults.m; sourceTree = "<group>"; };
 		AA8746C6128B02B600CACD4C /* IASKSettingsStoreUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = IASKSettingsStoreUserDefaults.h; sourceTree = "<group>"; };
 		AA8746C7128B02B600CACD4C /* IASKSettingsStoreFile.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = IASKSettingsStoreFile.m; sourceTree = "<group>"; };
@@ -145,7 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				DACD38A910598A7600AC8E51 /* Settings.bundle */,
-				1D6058910D05DD3D006BFB54 /* In App Settings Kit.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,7 +187,6 @@
 				8D1107310486CEB800E47090 /* InAppSettingsKitSampleApp-Info.plist */,
 				AA092DC215B73A0500081FBC /* Localizable.strings */,
 				AA092DC415B73A0500081FBC /* settings_about.html */,
-				AA092DC615B73A0500081FBC /* MainWindow.xib */,
 				AAA468D7125CD9680057A662 /* CustomSubviewController.xib */,
 				AAB8389A12846D110042FF80 /* CustomViewCell.xib */,
 			);
@@ -375,7 +369,6 @@
 				AA21CF1E15B7394C008F9369 /* 20-gear2Highlighted.png in Resources */,
 				AA092DC815B73A0500081FBC /* Localizable.strings in Resources */,
 				AA092DC915B73A0500081FBC /* settings_about.html in Resources */,
-				AA092DD115B73A0C00081FBC /* MainWindow.xib in Resources */,
 				AA092DD415B73A1100081FBC /* 20-gear2.png in Resources */,
 				AA092DD515B73A1100081FBC /* 20-gear2Highlighted.png in Resources */,
 				E42ADAED168205B100295D85 /* Default-568h@2x.png in Resources */,
@@ -431,16 +424,6 @@
 				AA092DCD15B73A0C00081FBC /* de */,
 			);
 			name = settings_about.html;
-			sourceTree = "<group>";
-		};
-		AA092DC615B73A0500081FBC /* MainWindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AA092DC715B73A0500081FBC /* en */,
-				AA092DD815B73C4700081FBC /* de */,
-				AA092DD915B73C4900081FBC /* fr */,
-			);
-			name = MainWindow.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
