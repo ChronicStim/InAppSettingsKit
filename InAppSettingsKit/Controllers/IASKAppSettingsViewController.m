@@ -112,7 +112,7 @@ CGRect IASKCGRectSwap(CGRect rect);
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         _reloadDisabled = NO;
-        _showDoneButton = YES;
+        _showDoneButton = NO;
         // If set to YES, will display credits for InAppSettingsKit creators
         _showCreditsFooter = NO;
     }
