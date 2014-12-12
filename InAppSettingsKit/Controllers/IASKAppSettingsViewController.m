@@ -835,7 +835,10 @@ static NSDictionary *oldUserDefaults = nil;
 		if (![[oldUserDefaults valueForKey:key] isEqual:[currentDict valueForKey:key]]) {
 			NSIndexPath *path = [self.settingsReader indexPathForKey:key];
 			if (path && ![[self.settingsReader specifierForKey:key].type isEqualToString:kIASKCustomViewSpecifier]) {
-				[indexPathsToUpdate addObject:path];
+                NSString *specifierType = [self.settingsReader specifierForKey:key].type;
+                if (![specifierType isEqualToString:kIASKCustomViewSpecifier] && ![specifierType isEqualToString:kIASKPSToggleSwitchSpecifier]) {
+                    [indexPathsToUpdate addObject:path];
+                }
 			}
 		}
 	}

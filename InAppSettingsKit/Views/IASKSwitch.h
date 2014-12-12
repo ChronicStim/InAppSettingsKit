@@ -15,10 +15,10 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "DCRoundSwitch.h"
+#import "DCRoundSwitch.h"
 
 
-@interface IASKSwitch : UISwitch
+@interface IASKSwitch : DCRoundSwitch
 
 @property (nonatomic, copy) NSString *key;
 
