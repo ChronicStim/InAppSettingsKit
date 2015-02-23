@@ -13,6 +13,11 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765580DF743DE002DB57D /* CoreGraphics.framework */; };
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
+		3E53E4EB1A9B8550006222F5 /* DCRoundSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E53E4E41A9B8550006222F5 /* DCRoundSwitch.m */; };
+		3E53E4EC1A9B8550006222F5 /* DCRoundSwitchKnobLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E53E4E61A9B8550006222F5 /* DCRoundSwitchKnobLayer.m */; };
+		3E53E4ED1A9B8550006222F5 /* DCRoundSwitchOutlineLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E53E4E81A9B8550006222F5 /* DCRoundSwitchOutlineLayer.m */; };
+		3E53E4EE1A9B8550006222F5 /* DCRoundSwitchToggleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E53E4EA1A9B8550006222F5 /* DCRoundSwitchToggleLayer.m */; };
+		3E53E4F01A9B85BD006222F5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E53E4EF1A9B85BD006222F5 /* QuartzCore.framework */; };
 		575C01E8127CE845009FBEA2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 575C01E7127CE845009FBEA2 /* MessageUI.framework */; };
 		6A1F35EE11490727003E6295 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A1F35ED11490727003E6295 /* Icon.png */; };
 		6A9BBF591148F1DA003D97FA /* 20-gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A9BBF581148F1DA003D97FA /* 20-gear2.png */; };
@@ -61,6 +66,15 @@
 		289233A90DB2D0DB0083E9F9 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* InAppSettingsKitSampleApp_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppSettingsKitSampleApp_Prefix.pch; sourceTree = "<group>"; };
+		3E53E4E31A9B8550006222F5 /* DCRoundSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRoundSwitch.h; sourceTree = "<group>"; };
+		3E53E4E41A9B8550006222F5 /* DCRoundSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRoundSwitch.m; sourceTree = "<group>"; };
+		3E53E4E51A9B8550006222F5 /* DCRoundSwitchKnobLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRoundSwitchKnobLayer.h; sourceTree = "<group>"; };
+		3E53E4E61A9B8550006222F5 /* DCRoundSwitchKnobLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRoundSwitchKnobLayer.m; sourceTree = "<group>"; };
+		3E53E4E71A9B8550006222F5 /* DCRoundSwitchOutlineLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRoundSwitchOutlineLayer.h; sourceTree = "<group>"; };
+		3E53E4E81A9B8550006222F5 /* DCRoundSwitchOutlineLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRoundSwitchOutlineLayer.m; sourceTree = "<group>"; };
+		3E53E4E91A9B8550006222F5 /* DCRoundSwitchToggleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRoundSwitchToggleLayer.h; sourceTree = "<group>"; };
+		3E53E4EA1A9B8550006222F5 /* DCRoundSwitchToggleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRoundSwitchToggleLayer.m; sourceTree = "<group>"; };
+		3E53E4EF1A9B85BD006222F5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		575C01E7127CE845009FBEA2 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		6A1F35ED11490727003E6295 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		6A9BBF581148F1DA003D97FA /* 20-gear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-gear2.png"; sourceTree = "<group>"; };
@@ -119,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E53E4F01A9B85BD006222F5 /* QuartzCore.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -164,6 +179,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				3E53E4EF1A9B85BD006222F5 /* QuartzCore.framework */,
+				3E53E4E21A9B8550006222F5 /* DCRoundSwitch */,
 				DA5F27A010BC29C000F983BD /* Sample App */,
 				DA33F57710BC2222004736E8 /* InAppSettingsKit */,
 			);
@@ -206,6 +223,22 @@
 				575C01E7127CE845009FBEA2 /* MessageUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3E53E4E21A9B8550006222F5 /* DCRoundSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				3E53E4E31A9B8550006222F5 /* DCRoundSwitch.h */,
+				3E53E4E41A9B8550006222F5 /* DCRoundSwitch.m */,
+				3E53E4E51A9B8550006222F5 /* DCRoundSwitchKnobLayer.h */,
+				3E53E4E61A9B8550006222F5 /* DCRoundSwitchKnobLayer.m */,
+				3E53E4E71A9B8550006222F5 /* DCRoundSwitchOutlineLayer.h */,
+				3E53E4E81A9B8550006222F5 /* DCRoundSwitchOutlineLayer.m */,
+				3E53E4E91A9B8550006222F5 /* DCRoundSwitchToggleLayer.h */,
+				3E53E4EA1A9B8550006222F5 /* DCRoundSwitchToggleLayer.m */,
+			);
+			name = DCRoundSwitch;
+			path = ../../DCRoundSwitch;
 			sourceTree = "<group>";
 		};
 		DA33F57710BC2222004736E8 /* InAppSettingsKit */ = {
@@ -391,7 +424,10 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* InAppSettingsKitSampleAppAppDelegate.m in Sources */,
 				AABD5DC41A3EECBD00D1316F /* IASKMultipleValueSelection.m in Sources */,
+				3E53E4EC1A9B8550006222F5 /* DCRoundSwitchKnobLayer.m in Sources */,
+				3E53E4EB1A9B8550006222F5 /* DCRoundSwitch.m in Sources */,
 				289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */,
+				3E53E4EE1A9B8550006222F5 /* DCRoundSwitchToggleLayer.m in Sources */,
 				DA33F59510BC2222004736E8 /* IASKAppSettingsViewController.m in Sources */,
 				DA33F59610BC2222004736E8 /* IASKSpecifierValuesViewController.m in Sources */,
 				DA33F59710BC2222004736E8 /* IASKSettingsReader.m in Sources */,
@@ -400,6 +436,7 @@
 				DA33F59A10BC2222004736E8 /* IASKPSTextFieldSpecifierViewCell.m in Sources */,
 				DA33F59C10BC2222004736E8 /* IASKSlider.m in Sources */,
 				DA33F59D10BC2222004736E8 /* IASKSwitch.m in Sources */,
+				3E53E4ED1A9B8550006222F5 /* DCRoundSwitchOutlineLayer.m in Sources */,
 				DA33F59E10BC2222004736E8 /* IASKTextField.m in Sources */,
 				AAA468D8125CD9680057A662 /* CustomSubviewController.m in Sources */,
 				AAB838A012846D850042FF80 /* CustomViewCell.m in Sources */,
