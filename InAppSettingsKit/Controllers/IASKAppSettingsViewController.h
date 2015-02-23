@@ -60,21 +60,15 @@
 
 
 @interface IASKAppSettingsViewController : UITableViewController <IASKViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate>
-{
-    __weak UIViewController *_currentChildViewController;
-    BOOL _reloadDisabled;
-}
 
 @property (nonatomic, assign) IBOutlet id delegate;
 @property (nonatomic, copy) NSString *file;
 @property (nonatomic, assign) BOOL showCreditsFooter;
-@property (nonatomic, assign) BOOL showDoneButton;
+@property (nonatomic, assign) IBInspectable BOOL showDoneButton;
 @property (nonatomic, retain) NSSet *hiddenKeys;
-@property (nonatomic, retain) NSMutableArray *viewList;
+@property (nonatomic) IBInspectable BOOL neverShowPrivacySettings;
 
 - (void)synchronizeSettings;
 - (void)dismiss:(id)sender;
 - (void)setHiddenKeys:(NSSet*)hiddenKeys animated:(BOOL)animated;
-- (UITableViewCell*)newCellForIdentifier:(NSString*)identifier;
-
 @end
