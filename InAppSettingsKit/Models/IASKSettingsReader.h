@@ -43,6 +43,7 @@
 #define kIASKViewControllerSelector           @"IASKViewControllerSelector"
 #define kIASKViewControllerStoryBoardFile     @"IASKViewControllerStoryBoardFile"
 #define kIASKViewControllerStoryBoardId       @"IASKViewControllerStoryBoardId"
+#define kIASKViewControllerStoryBoardSegueID  @"IASKViewControllerStoryBoardSegueID"
 #define kIASKButtonClass                      @"IASKButtonClass"
 #define kIASKButtonAction                     @"IASKButtonAction"
 #define kIASKMailComposeToRecipents           @"IASKMailComposeToRecipents"

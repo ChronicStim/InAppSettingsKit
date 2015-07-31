@@ -676,9 +676,14 @@ CGRect IASKCGRectSwap(CGRect rect);
             NSString *storyBoardFileFromSpecifier = [specifier viewControllerStoryBoardFile];
             storyBoardFileFromSpecifier = storyBoardFileFromSpecifier && storyBoardFileFromSpecifier.length > 0 ? storyBoardFileFromSpecifier : [[NSBundle mainBundle].infoDictionary objectForKey:@"UIMainStoryboardFile"];
 			UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:storyBoardFileFromSpecifier bundle:nil];
-			UIViewController * vc = [storyBoard instantiateViewControllerWithIdentifier:[specifier viewControllerStoryBoardID]];
-			IASK_IF_IOS7_OR_GREATER(vc.view.tintColor = self.view.tintColor;)
-            [self.navigationController pushViewController:vc animated:YES];
+            
+            if ([specifier storyboardSegueID]) {
+                [self performSegueWithIdentifier:[specifier storyboardSegueID] sender:self];
+            } else {
+                UIViewController * vc = [storyBoard instantiateViewControllerWithIdentifier:[specifier viewControllerStoryBoardID]];
+                IASK_IF_IOS7_OR_GREATER(vc.view.tintColor = self.view.tintColor;)
+                [self.navigationController pushViewController:vc animated:YES];
+            }
 			return;
 		}
         
