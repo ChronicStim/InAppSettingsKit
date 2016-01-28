@@ -41,6 +41,7 @@
 - (void)_reinterpretValues:(NSDictionary*)specifierDict {
     NSArray *values = [_specifierDict objectForKey:kIASKValues];
     NSArray *titles = [_specifierDict objectForKey:kIASKTitles];
+    NSArray *subtitles = [_specifierDict objectForKey:kIASKSubtitles];
     NSArray *shortTitles = [_specifierDict objectForKey:kIASKShortTitles];
     NSMutableDictionary *multipleValuesDict = [NSMutableDictionary new];
     
@@ -51,6 +52,10 @@
     if (titles) {
 		[multipleValuesDict setObject:titles forKey:kIASKTitles];
 	}
+    
+    if (subtitles) {
+        [multipleValuesDict setObject:titles forKey:kIASKSubtitles];
+    }
     
     if (shortTitles) {
 		[multipleValuesDict setObject:shortTitles forKey:kIASKShortTitles];
@@ -125,6 +130,26 @@
 	return nil;
 }
 
+- (NSString*)subtitleForCurrentValue:(id)currentValue;
+{
+    NSArray *values = [self multipleValues];
+    NSArray *subtitles = [self multipleSubtitles];
+    
+    if (values.count != subtitles.count) {
+        return nil;
+    }
+    NSInteger keyIndex = [values indexOfObject:currentValue];
+    if (keyIndex == NSNotFound) {
+        return nil;
+    }
+    @try {
+        IASKSettingsReader *strongSettingsReader = self.settingsReader;
+        return [strongSettingsReader titleForStringId:[subtitles objectAtIndex:keyIndex]];
+    }
+    @catch (NSException * e) {}
+    return nil;
+}
+
 - (NSInteger)multipleValuesCount {
     return [[_multipleValuesDict objectForKey:kIASKValues] count];
 }
@@ -135,6 +160,11 @@
 
 - (NSArray*)multipleTitles {
     return [_multipleValuesDict objectForKey:kIASKTitles];
+}
+
+- (NSArray*)multipleSubtitles;
+{
+    return [_multipleValuesDict objectForKey:kIASKSubtitles];
 }
 
 - (NSArray*)multipleShortTitles {
