@@ -36,6 +36,7 @@
 #define kIASKAutoCorrectionType               @"AutocorrectionType"
 #define kIASKValues                           @"Values"
 #define kIASKTitles                           @"Titles"
+#define kIASKSubtitles                        @"Subtitles"
 #define kIASKShortTitles                      @"ShortTitles"
 #define kIASKSupportedUserInterfaceIdioms     @"SupportedUserInterfaceIdioms"
 #define kIASKSubtitle                         @"IASKSubtitle"

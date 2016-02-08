@@ -35,9 +35,11 @@
 - (NSString*)key;
 - (NSString*)type;
 - (NSString*)titleForCurrentValue:(id)currentValue;
+- (NSString*)subtitleForCurrentValue:(id)currentValue;
 - (NSInteger)multipleValuesCount;
 - (NSArray*)multipleValues;
 - (NSArray*)multipleTitles;
+- (NSArray*)multipleSubtitles;
 - (NSString*)file;
 - (id)defaultValue;
 - (id)defaultStringValue;
