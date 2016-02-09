@@ -19,6 +19,7 @@
 #import "IASKViewController.h"
 @class IASKSpecifier;
 @class IASKSettingsReader;
+@class IASKMultipleValueSelection;
 
 @interface IASKSpecifierValuesViewController : UIViewController<IASKViewController,UITableViewDelegate,UITableViewDataSource> {
     UITableView				*_tableView;
@@ -29,5 +30,5 @@
 
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) IASKSpecifier *currentSpecifier;
-
+@property (nonatomic, strong, readonly) IASKMultipleValueSelection *selection;
 @end
