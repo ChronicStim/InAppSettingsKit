@@ -71,7 +71,7 @@
 	}
     
     if (subtitles) {
-        [multipleValuesDict setObject:titles forKey:kIASKSubtitles];
+        [multipleValuesDict setObject:subtitles forKey:kIASKSubtitles];
     }
     
     if (shortTitles) {
