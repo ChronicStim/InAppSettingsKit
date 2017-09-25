@@ -65,6 +65,8 @@
 				<string>9</string>
 				<string>10</string>
 			</array>
+			<key>DisplaySortedByTitle</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>Title</key>
@@ -180,6 +182,26 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
+			<string>inappsettingskit.com</string>
+			<key>File</key>
+			<string>http://www.inappsettingskit.com/</string>
+			<key>Title</key>
+			<string>Open URL (right)</string>
+			<key>Type</key>
+			<string>IASKOpenURLSpecifier</string>
+			<key>IASKTextAlignment</key>
+			<string>IASKUITextAlignmentRight</string>
+		</dict>
+		<dict>
+			<key>File</key>
+			<string>LOCALIZED_URL</string>
+			<key>Title</key>
+			<string>LOCALIZED_URL_TITLE</string>
+			<key>Type</key>
+			<string>IASKOpenURLSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
 			<string>Tell A Friend</string>
 			<key>IASKMailComposeBccRecipents</key>
 			<array/>
@@ -264,7 +286,7 @@
 			<key>IASKViewControllerClass</key>
 			<string>CustomSubviewController</string>
 			<key>IASKViewControllerSelector</key>
-			<string>init</string>
+			<string>initWithFile:specifier:</string>
 			<key>Title</key>
 			<string>Custom Subview</string>
 			<key>Type</key>

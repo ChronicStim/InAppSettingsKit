@@ -65,6 +65,8 @@
 				<string>9</string>
 				<string>10</string>
 			</array>
+			<key>DisplaySortedByTitle</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>Title</key>
@@ -264,7 +266,7 @@
 			<key>IASKViewControllerClass</key>
 			<string>CustomSubviewController</string>
 			<key>IASKViewControllerSelector</key>
-			<string>init</string>
+			<string>initWithFile:specifier:</string>
 			<key>Title</key>
 			<string>Custom Subview</string>
 			<key>Type</key>
