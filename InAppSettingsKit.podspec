@@ -2,6 +2,7 @@ Pod::Spec.new do |s|
 	s.name                  = 'InAppSettingsKit'
 	s.version               = '4.0.0'
 	s.summary               = 'This iPhone framework allows settings to be in-app in addition to being in the Settings app.'
+	s.authors               = {"Ortwin Gentz" => "http://www.futuretap.com", "Luc Vandal" => "http://edovia.com/company/#contact_form"}
 	s.homepage              = 'https://github.com/ChronicStim/InAppSettingsKit'
 	s.license               = 'BSD'
 	s.platform              = :ios, '6.0'
