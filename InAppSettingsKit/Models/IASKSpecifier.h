@@ -72,6 +72,5 @@
 - (NSTextAlignment)textAlignment;
 - (NSArray *)userInterfaceIdioms;
 - (NSString *)radioGroupValue;
-- (NSString *)storyboardSegueID;
 
 @end

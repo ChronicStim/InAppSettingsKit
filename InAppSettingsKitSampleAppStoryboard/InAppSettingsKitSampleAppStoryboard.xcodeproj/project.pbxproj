@@ -29,7 +29,6 @@
 		AAC15AAB1D7D6F4200627834 /* 20-gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = AAC15A911D7D6F4200627834 /* 20-gear2.png */; };
 		AAC15AAC1D7D6F4200627834 /* 20-gear2Highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AAC15A921D7D6F4200627834 /* 20-gear2Highlighted.png */; };
 		AAC15AAD1D7D6F4200627834 /* InAppSettingsKitSampleApp-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAC15A931D7D6F4200627834 /* InAppSettingsKitSampleApp-Info.plist */; };
-		AAC15AAE1D7D6F4200627834 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AAC15A971D7D6F4200627834 /* Localizable.strings */; };
 		AAC15AAF1D7D6F4200627834 /* settings_about.html in Resources */ = {isa = PBXBuildFile; fileRef = AAC15A9A1D7D6F4200627834 /* settings_about.html */; };
 		AAC15AB01D7D6F4200627834 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAC15A9F1D7D6F4200627834 /* MainWindow.xib */; };
 		AAC15AB11D7D6F4200627834 /* CustomSubviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAC15AA01D7D6F4200627834 /* CustomSubviewController.xib */; };
@@ -87,9 +86,6 @@
 		AAC15A911D7D6F4200627834 /* 20-gear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-gear2.png"; sourceTree = "<group>"; };
 		AAC15A921D7D6F4200627834 /* 20-gear2Highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-gear2Highlighted.png"; sourceTree = "<group>"; };
 		AAC15A931D7D6F4200627834 /* InAppSettingsKitSampleApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "InAppSettingsKitSampleApp-Info.plist"; sourceTree = "<group>"; };
-		AAC15A941D7D6F4200627834 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		AAC15A951D7D6F4200627834 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		AAC15A961D7D6F4200627834 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AAC15A981D7D6F4200627834 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/settings_about.html; sourceTree = "<group>"; };
 		AAC15A991D7D6F4200627834 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = de; path = de.lproj/settings_about.html; sourceTree = "<group>"; };
 		AAC15A9B1D7D6F4200627834 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainWindow.xib; sourceTree = "<group>"; };
@@ -225,7 +221,6 @@
 				AAC15A911D7D6F4200627834 /* 20-gear2.png */,
 				AAC15A921D7D6F4200627834 /* 20-gear2Highlighted.png */,
 				AAC15A931D7D6F4200627834 /* InAppSettingsKitSampleApp-Info.plist */,
-				AAC15A971D7D6F4200627834 /* Localizable.strings */,
 				AAC15A9A1D7D6F4200627834 /* settings_about.html */,
 				AAC15A9F1D7D6F4200627834 /* MainWindow.xib */,
 				AAC15AA01D7D6F4200627834 /* CustomSubviewController.xib */,
@@ -355,7 +350,6 @@
 				AAC15AA51D7D6F4200627834 /* Default-568h@2x.png in Resources */,
 				AAC15AAD1D7D6F4200627834 /* InAppSettingsKitSampleApp-Info.plist in Resources */,
 				AAC15AAC1D7D6F4200627834 /* 20-gear2Highlighted.png in Resources */,
-				AAC15AAE1D7D6F4200627834 /* Localizable.strings in Resources */,
 				AAC15A811D7D62EF00627834 /* CustomViewCell.xib in Resources */,
 				AAC15AAF1D7D6F4200627834 /* settings_about.html in Resources */,
 				AAC15AAB1D7D6F4200627834 /* 20-gear2.png in Resources */,
@@ -429,16 +423,6 @@
 				5797A3CB1D2F6E6D00B13CB2 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		AAC15A971D7D6F4200627834 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AAC15A941D7D6F4200627834 /* en */,
-				AAC15A951D7D6F4200627834 /* de */,
-				AAC15A961D7D6F4200627834 /* fr */,
-			);
-			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		AAC15A9A1D7D6F4200627834 /* settings_about.html */ = {

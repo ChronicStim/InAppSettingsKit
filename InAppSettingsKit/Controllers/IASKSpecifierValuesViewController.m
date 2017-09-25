@@ -23,7 +23,7 @@
 
 @interface IASKSpecifierValuesViewController()
 
-@property (nonatomic, strong, readonly) IASKMultipleValueSelection *selection;
+@property (nonatomic, strong, readwrite) IASKMultipleValueSelection *selection;
 @property (nonatomic) BOOL didFirstLayout;
 @end
 

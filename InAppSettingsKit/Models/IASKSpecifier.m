@@ -260,7 +260,7 @@
     }
     @try {
         IASKSettingsReader *strongSettingsReader = self.settingsReader;
-        return [strongSettingsReader titleForStringId:[subtitles objectAtIndex:keyIndex]];
+        return [strongSettingsReader titleForId:[subtitles objectAtIndex:keyIndex]];
     }
     @catch (NSException * e) {}
     return nil;
