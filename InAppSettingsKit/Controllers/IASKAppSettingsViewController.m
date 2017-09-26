@@ -568,7 +568,7 @@ CGRect IASKCGRectSwap(CGRect rect);
 			toggleState = specifier.defaultBoolValue;
 		}
 		IASKSwitch *toggle = (IASKSwitch*)cell.accessoryView;
-		toggle.on = toggleState;
+        [toggle setOn:toggleState animated:NO ignoreControlEvents:YES]; // ignore control events to prevent redefining the preference setting again when switch is set
 		toggle.key = specifier.key;
 	}
 	else if ([specifier.type isEqualToString:kIASKPSMultiValueSpecifier]) {
