@@ -836,28 +836,34 @@ CGRect IASKCGRectSwap(CGRect rect);
 
 static NSDictionary *oldUserDefaults = nil;
 - (void)userDefaultsDidChange {
-	NSDictionary *currentDict = [NSUserDefaults standardUserDefaults].dictionaryRepresentation;
-	NSMutableArray *indexPathsToUpdate = [NSMutableArray array];
-	for (NSString *key in currentDict.allKeys) {
-		if (![[oldUserDefaults valueForKey:key] isEqual:[currentDict valueForKey:key]]) {
-			NSIndexPath *path = [self.settingsReader indexPathForKey:key];
-			if (path && ![[self.settingsReader specifierForKey:key].type isEqualToString:kIASKCustomViewSpecifier]) {
-				[indexPathsToUpdate addObject:path];
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		IASKSettingsStoreUserDefaults *udSettingsStore = (id)self.settingsStore;
+		NSDictionary *currentDict = udSettingsStore.defaults.dictionaryRepresentation;
+		NSMutableArray *indexPathsToUpdate = [NSMutableArray array];
+		for (NSString *key in currentDict.allKeys) {
+			if (oldUserDefaults && ![[oldUserDefaults valueForKey:key] isEqual:[currentDict valueForKey:key]]) {
+				NSIndexPath *path = [self.settingsReader indexPathForKey:key];
+				if (path && ![[self.settingsReader specifierForKey:key].type isEqualToString:kIASKCustomViewSpecifier] && [self.tableView.indexPathsForVisibleRows containsObject:path]) {
+					[indexPathsToUpdate addObject:path];
+				}
 			}
 		}
-	}
-	oldUserDefaults = currentDict;
-	
-	for (UITableViewCell *cell in self.tableView.visibleCells) {
-		if ([cell isKindOfClass:[IASKPSTextFieldSpecifierViewCell class]] && [((IASKPSTextFieldSpecifierViewCell*)cell).textField isFirstResponder]) {
-			[indexPathsToUpdate removeObject:[self.tableView indexPathForCell:cell]];
+		oldUserDefaults = currentDict;
+		
+		for (UITableViewCell *cell in self.tableView.visibleCells) {
+			if ([cell isKindOfClass:[IASKPSTextFieldSpecifierViewCell class]] && [((IASKPSTextFieldSpecifierViewCell*)cell).textField isFirstResponder]) {
+				[indexPathsToUpdate removeObject:[self.tableView indexPathForCell:cell]];
+			}
 		}
-	}
-	if (indexPathsToUpdate.count) {
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-			[self.tableView reloadRowsAtIndexPaths:indexPathsToUpdate withRowAnimation:UITableViewRowAnimationNone];
-		});
-	}
+		if (indexPathsToUpdate.count) {
+			[self.tableView reloadRowsAtIndexPaths:indexPathsToUpdate withRowAnimation:UITableViewRowAnimationAutomatic];
+		}
+	});
+}
+
+- (void)didChangeSettingViaIASK:(NSNotification*)notification {
+	NSString *key = notification.userInfo.allKeys.firstObject;
+	[oldUserDefaults setValue:notification.userInfo[key] forKey:key];
 }
 
 - (void)reload {
