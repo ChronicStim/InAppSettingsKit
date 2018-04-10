@@ -9,13 +9,11 @@
     NSInteger _checkedIndex;
 }
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(userDefaultsDidChange)
-                                                     name:NSUserDefaultsDidChangeNotification
-                                                   object:[NSUserDefaults standardUserDefaults]];
+@synthesize settingsStore = _settingsStore;
+
+- (id)initWithSettingsStore:(id<IASKSettingsStore>)settingsStore {
+    if ((self = [super init])) {
+        self.settingsStore = settingsStore;
     }
     return self;
 }
@@ -44,9 +42,26 @@
 
 - (id<IASKSettingsStore>)settingsStore {
     if (_settingsStore == nil) {
-        _settingsStore = [[IASKSettingsStoreUserDefaults alloc] init];
+        self.settingsStore = [[IASKSettingsStoreUserDefaults alloc] init];
     }
     return _settingsStore;
+}
+
+- (void)setSettingsStore:(id<IASKSettingsStore>)settingsStore {
+	if ([_settingsStore isKindOfClass:IASKSettingsStoreUserDefaults.class]) {
+		IASKSettingsStoreUserDefaults *udSettingsStore = (id)_settingsStore;
+		[[NSNotificationCenter defaultCenter] removeObserver:self name:NSUserDefaultsDidChangeNotification object:udSettingsStore.defaults];
+	}
+	
+	_settingsStore = settingsStore;
+	
+	if ([settingsStore isKindOfClass:IASKSettingsStoreUserDefaults.class]) {
+		IASKSettingsStoreUserDefaults *udSettingsStore = (id)settingsStore;
+		[[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(userDefaultsDidChange)
+													 name:NSUserDefaultsDidChangeNotification
+												   object:udSettingsStore.defaults];
+	}
 }
 
 #pragma mark - selection
@@ -68,7 +83,7 @@
     [self.settingsStore setObject:[values objectAtIndex:indexPath.row] forKey:[_specifier key]];
     [self.settingsStore synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:kIASKAppSettingChanged
-                                                        object:[_specifier key]
+                                                        object:self
                                                       userInfo:@{
                                                           _specifier.key: values[indexPath.row]
                                                       }];
