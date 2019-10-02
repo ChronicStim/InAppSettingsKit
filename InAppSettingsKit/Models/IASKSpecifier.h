@@ -29,6 +29,8 @@
 - (id)initWithSpecifier:(NSDictionary *)specifier
         radioGroupValue:(NSString *)radioGroupValue;
 
+- (void)setMultipleValuesDictValues:(NSArray*)values titles:(NSArray*)titles;
+
 - (void)sortIfNeeded;
 
 - (NSString*)localizedObjectForKey:(NSString*)key;
@@ -42,7 +44,11 @@
 - (NSInteger)multipleValuesCount;
 - (NSArray*)multipleValues;
 - (NSArray*)multipleTitles;
+<<<<<<< HEAD
 - (NSArray*)multipleSubtitles;
+=======
+- (NSArray *)multipleIconNames;
+>>>>>>> 07c2805600d6e04745b49b49d81acf0d45a5bc15
 - (NSString*)file;
 - (id)defaultValue;
 - (id)defaultStringValue;
