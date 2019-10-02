@@ -1,9 +1,6 @@
 Pod::Spec.new do |s|
 	s.name                  = 'InAppSettingsKit'
-<<<<<<< HEAD
-	s.version               = '4.0.0'
-=======
-	s.version               = '2.12'
+	s.version               = '2.14'
 >>>>>>> 07c2805600d6e04745b49b49d81acf0d45a5bc15
 	s.summary               = 'This iPhone framework allows settings to be in-app in addition to being in the Settings app.'
 
@@ -15,7 +12,7 @@ InAppSettingsKit (IASK) is an open source solution to easily add in-app settings
 	s.homepage              = 'https://github.com/ChronicStim/InAppSettingsKit'
 	s.license               = 'BSD'
 	s.requires_arc          = true
-	s.source                = {git: 'https://github.com/ChronicStim/InAppSettingsKit.git', branch: 'CPT_version_4_0_x', tag: s.version.to_s}
+	s.source                = {git: 'https://github.com/ChronicStim/InAppSettingsKit.git', branch: 'CPT_version_4_0_x'}
 	s.resource_bundles		= {"InAppSettingsKit" => "InAppSettingsKit/Resources/*"}
 	s.source_files			= "InAppSettingsKit/**/*.{h,m}"
 	s.frameworks			= "MessageUI", "UIKit"
