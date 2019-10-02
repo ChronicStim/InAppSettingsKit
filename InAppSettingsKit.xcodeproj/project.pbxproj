@@ -7,8 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1AA106821916565D4D6221F9 /* IASKMultipleValueSelection.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA1013C46B6050E24DEBCE2 /* IASKMultipleValueSelection.h */; };
+		1AA106821916565D4D6221F9 /* IASKMultipleValueSelection.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA1013C46B6050E24DEBCE2 /* IASKMultipleValueSelection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1AA1073290B7DC27EB0C6A70 /* IASKMultipleValueSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA10C9888067F44636DBF0D /* IASKMultipleValueSelection.m */; };
+		292BA28F2344F2B20002E70E /* DCRoundSwitchToggleLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 292BA2872344F2B20002E70E /* DCRoundSwitchToggleLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		292BA2902344F2B20002E70E /* DCRoundSwitchToggleLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 292BA2872344F2B20002E70E /* DCRoundSwitchToggleLayer.h */; };
+		292BA2912344F2B20002E70E /* DCRoundSwitchOutlineLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 292BA2882344F2B20002E70E /* DCRoundSwitchOutlineLayer.m */; };
+		292BA2922344F2B20002E70E /* DCRoundSwitchOutlineLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 292BA2882344F2B20002E70E /* DCRoundSwitchOutlineLayer.m */; };
+		292BA2932344F2B20002E70E /* DCRoundSwitchOutlineLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 292BA2882344F2B20002E70E /* DCRoundSwitchOutlineLayer.m */; };
+		292BA2942344F2B20002E70E /* DCRoundSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 292BA2892344F2B20002E70E /* DCRoundSwitch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		292BA2952344F2B20002E70E /* DCRoundSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 292BA2892344F2B20002E70E /* DCRoundSwitch.h */; };
+		292BA2962344F2B20002E70E /* DCRoundSwitchKnobLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 292BA28A2344F2B20002E70E /* DCRoundSwitchKnobLayer.m */; };
+		292BA2972344F2B20002E70E /* DCRoundSwitchKnobLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 292BA28A2344F2B20002E70E /* DCRoundSwitchKnobLayer.m */; };
+		292BA2982344F2B20002E70E /* DCRoundSwitchKnobLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 292BA28A2344F2B20002E70E /* DCRoundSwitchKnobLayer.m */; };
+		292BA2992344F2B20002E70E /* DCRoundSwitchToggleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 292BA28B2344F2B20002E70E /* DCRoundSwitchToggleLayer.m */; };
+		292BA29A2344F2B20002E70E /* DCRoundSwitchToggleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 292BA28B2344F2B20002E70E /* DCRoundSwitchToggleLayer.m */; };
+		292BA29B2344F2B20002E70E /* DCRoundSwitchToggleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 292BA28B2344F2B20002E70E /* DCRoundSwitchToggleLayer.m */; };
+		292BA29C2344F2B20002E70E /* DCRoundSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 292BA28C2344F2B20002E70E /* DCRoundSwitch.m */; };
+		292BA29D2344F2B20002E70E /* DCRoundSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 292BA28C2344F2B20002E70E /* DCRoundSwitch.m */; };
+		292BA29E2344F2B20002E70E /* DCRoundSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 292BA28C2344F2B20002E70E /* DCRoundSwitch.m */; };
+		292BA29F2344F2B20002E70E /* DCRoundSwitchOutlineLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 292BA28D2344F2B20002E70E /* DCRoundSwitchOutlineLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		292BA2A02344F2B20002E70E /* DCRoundSwitchOutlineLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 292BA28D2344F2B20002E70E /* DCRoundSwitchOutlineLayer.h */; };
+		292BA2A12344F2B20002E70E /* DCRoundSwitchKnobLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 292BA28E2344F2B20002E70E /* DCRoundSwitchKnobLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		292BA2A22344F2B20002E70E /* DCRoundSwitchKnobLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 292BA28E2344F2B20002E70E /* DCRoundSwitchKnobLayer.h */; };
 		AA0A85EB1C89C9A70036F778 /* IASKTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA5AB5261C88974100B20124 /* IASKTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA0A85EC1C89C9AB0036F778 /* IASKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5AB5271C88974100B20124 /* IASKTextView.m */; };
 		AA0A85ED1C89C9B30036F778 /* IASKTextViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = AA5AB5281C88974100B20124 /* IASKTextViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -21,7 +41,7 @@
 		AA627D2919F67B8E0079AAE8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA627D2719F67B7C0079AAE8 /* MessageUI.framework */; };
 		AA627D3B19F695F30079AAE8 /* IASKLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA627D2B19F695F30079AAE8 /* IASKLocalizable.strings */; };
 		AADCA136233142C700D55F13 /* IASKColor.m in Sources */ = {isa = PBXBuildFile; fileRef = AADCA134233142C700D55F13 /* IASKColor.m */; };
-		AADCA137233142C700D55F13 /* IASKColor.h in Headers */ = {isa = PBXBuildFile; fileRef = AADCA135233142C700D55F13 /* IASKColor.h */; };
+		AADCA137233142C700D55F13 /* IASKColor.h in Headers */ = {isa = PBXBuildFile; fileRef = AADCA135233142C700D55F13 /* IASKColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DAC156261B54533D00655031 /* InAppSettingsKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DAC156251B54533D00655031 /* InAppSettingsKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DAC1562B1B54537200655031 /* IASKPSSliderSpecifierViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E42ADAD41682036500295D85 /* IASKPSSliderSpecifierViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DAC1562C1B54537200655031 /* IASKPSSliderSpecifierViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E42ADAD51682036500295D85 /* IASKPSSliderSpecifierViewCell.m */; };
@@ -107,6 +127,14 @@
 /* Begin PBXFileReference section */
 		1AA1013C46B6050E24DEBCE2 /* IASKMultipleValueSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = IASKMultipleValueSelection.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; };
 		1AA10C9888067F44636DBF0D /* IASKMultipleValueSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = IASKMultipleValueSelection.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; };
+		292BA2872344F2B20002E70E /* DCRoundSwitchToggleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRoundSwitchToggleLayer.h; sourceTree = "<group>"; };
+		292BA2882344F2B20002E70E /* DCRoundSwitchOutlineLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRoundSwitchOutlineLayer.m; sourceTree = "<group>"; };
+		292BA2892344F2B20002E70E /* DCRoundSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRoundSwitch.h; sourceTree = "<group>"; };
+		292BA28A2344F2B20002E70E /* DCRoundSwitchKnobLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRoundSwitchKnobLayer.m; sourceTree = "<group>"; };
+		292BA28B2344F2B20002E70E /* DCRoundSwitchToggleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRoundSwitchToggleLayer.m; sourceTree = "<group>"; };
+		292BA28C2344F2B20002E70E /* DCRoundSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRoundSwitch.m; sourceTree = "<group>"; };
+		292BA28D2344F2B20002E70E /* DCRoundSwitchOutlineLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRoundSwitchOutlineLayer.h; sourceTree = "<group>"; };
+		292BA28E2344F2B20002E70E /* DCRoundSwitchKnobLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRoundSwitchKnobLayer.h; sourceTree = "<group>"; };
 		AA5AB5261C88974100B20124 /* IASKTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = IASKTextView.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; };
 		AA5AB5271C88974100B20124 /* IASKTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = IASKTextView.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; };
 		AA5AB5281C88974100B20124 /* IASKTextViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = IASKTextViewCell.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; };
@@ -231,6 +259,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		292BA2862344F2B20002E70E /* DCRoundSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				292BA2872344F2B20002E70E /* DCRoundSwitchToggleLayer.h */,
+				292BA2882344F2B20002E70E /* DCRoundSwitchOutlineLayer.m */,
+				292BA2892344F2B20002E70E /* DCRoundSwitch.h */,
+				292BA28A2344F2B20002E70E /* DCRoundSwitchKnobLayer.m */,
+				292BA28B2344F2B20002E70E /* DCRoundSwitchToggleLayer.m */,
+				292BA28C2344F2B20002E70E /* DCRoundSwitch.m */,
+				292BA28D2344F2B20002E70E /* DCRoundSwitchOutlineLayer.h */,
+				292BA28E2344F2B20002E70E /* DCRoundSwitchKnobLayer.h */,
+			);
+			path = DCRoundSwitch;
+			sourceTree = "<group>";
+		};
 		AA627D2A19F695F30079AAE8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +331,7 @@
 		E42ADA94168202D700295D85 /* InAppSettingsKit */ = {
 			isa = PBXGroup;
 			children = (
+				292BA2862344F2B20002E70E /* DCRoundSwitch */,
 				E42ADAC81682036500295D85 /* Controllers */,
 				E42ADAD31682036500295D85 /* Models */,
 				AA627D2A19F695F30079AAE8 /* Resources */,
@@ -457,11 +501,15 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				292BA2952344F2B20002E70E /* DCRoundSwitch.h in Headers */,
 				DAC1563A1B54538500655031 /* IASKSettingsStoreFile.h in Headers */,
 				DAC156331B54537200655031 /* IASKTextField.h in Headers */,
 				DAC156311B54537200655031 /* IASKSwitch.h in Headers */,
 				E40F708323339F0900A3E65E /* IASKColor.h in Headers */,
+				292BA2A22344F2B20002E70E /* DCRoundSwitchKnobLayer.h in Headers */,
+				292BA2902344F2B20002E70E /* DCRoundSwitchToggleLayer.h in Headers */,
 				DAC156381B54538500655031 /* IASKSettingsStoreUserDefaults.h in Headers */,
+				292BA2A02344F2B20002E70E /* DCRoundSwitchOutlineLayer.h in Headers */,
 				DAC1562B1B54537200655031 /* IASKPSSliderSpecifierViewCell.h in Headers */,
 				DAC1562F1B54537200655031 /* IASKSlider.h in Headers */,
 				DAC156411B54538D00655031 /* IASKAppSettingsViewController.h in Headers */,
@@ -483,7 +531,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AADCA137233142C700D55F13 /* IASKColor.h in Headers */,
 				E401BD3C16820A0D00EAF534 /* IASKAppSettingsViewController.h in Headers */,
 				E401BD3D16820A1700EAF534 /* IASKSpecifierValuesViewController.h in Headers */,
 				E401BD3E16820A1C00EAF534 /* IASKAppSettingsWebViewController.h in Headers */,
@@ -496,11 +543,16 @@
 				E401BD4516820A2D00EAF534 /* IASKPSTextFieldSpecifierViewCell.h in Headers */,
 				AA5AB52C1C88974100B20124 /* IASKTextViewCell.h in Headers */,
 				E401BD4716820A2D00EAF534 /* IASKSlider.h in Headers */,
+				AADCA137233142C700D55F13 /* IASKColor.h in Headers */,
+				292BA2A12344F2B20002E70E /* DCRoundSwitchKnobLayer.h in Headers */,
+				292BA29F2344F2B20002E70E /* DCRoundSwitchOutlineLayer.h in Headers */,
+				292BA28F2344F2B20002E70E /* DCRoundSwitchToggleLayer.h in Headers */,
+				292BA2942344F2B20002E70E /* DCRoundSwitch.h in Headers */,
+				1AA106821916565D4D6221F9 /* IASKMultipleValueSelection.h in Headers */,
 				E401BD4816820A2D00EAF534 /* IASKSwitch.h in Headers */,
 				AA5AB52A1C88974100B20124 /* IASKTextView.h in Headers */,
 				E401BD4916820A2D00EAF534 /* IASKTextField.h in Headers */,
 				E401BD4B16820BBA00EAF534 /* IASKViewController.h in Headers */,
-				1AA106821916565D4D6221F9 /* IASKMultipleValueSelection.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,11 +696,15 @@
 			files = (
 				DAC1563B1B54538500655031 /* IASKSettingsStoreFile.m in Sources */,
 				DAC156301B54537200655031 /* IASKSlider.m in Sources */,
+				292BA2982344F2B20002E70E /* DCRoundSwitchKnobLayer.m in Sources */,
+				292BA29E2344F2B20002E70E /* DCRoundSwitch.m in Sources */,
 				DAC156421B54538D00655031 /* IASKAppSettingsViewController.m in Sources */,
 				DAC156441B54538D00655031 /* IASKSpecifierValuesViewController.m in Sources */,
 				DAC156341B54537200655031 /* IASKTextField.m in Sources */,
 				AA0A85EE1C89C9B70036F778 /* IASKTextViewCell.m in Sources */,
+				292BA2932344F2B20002E70E /* DCRoundSwitchOutlineLayer.m in Sources */,
 				DAC156321B54537200655031 /* IASKSwitch.m in Sources */,
+				292BA29B2344F2B20002E70E /* DCRoundSwitchToggleLayer.m in Sources */,
 				DAC1562E1B54537200655031 /* IASKPSTextFieldSpecifierViewCell.m in Sources */,
 				DAC156371B54538500655031 /* IASKSettingsStore.m in Sources */,
 				DAC156471B54538D00655031 /* IASKMultipleValueSelection.m in Sources */,
@@ -668,11 +724,15 @@
 			files = (
 				E4EDC59D16820D9500BD3CA9 /* IASKAppSettingsViewController.m in Sources */,
 				E4EDC59E16820D9500BD3CA9 /* IASKSpecifierValuesViewController.m in Sources */,
+				292BA2962344F2B20002E70E /* DCRoundSwitchKnobLayer.m in Sources */,
+				292BA29C2344F2B20002E70E /* DCRoundSwitch.m in Sources */,
 				E4EDC59F16820D9500BD3CA9 /* IASKAppSettingsWebViewController.m in Sources */,
 				E4EDC5A016820D9500BD3CA9 /* IASKSettingsReader.m in Sources */,
 				E4EDC5A116820D9500BD3CA9 /* IASKSpecifier.m in Sources */,
 				AA5AB52D1C88974100B20124 /* IASKTextViewCell.m in Sources */,
+				292BA2912344F2B20002E70E /* DCRoundSwitchOutlineLayer.m in Sources */,
 				E4EDC5A216820D9500BD3CA9 /* IASKSettingsStore.m in Sources */,
+				292BA2992344F2B20002E70E /* DCRoundSwitchToggleLayer.m in Sources */,
 				E4EDC5A316820D9500BD3CA9 /* IASKSettingsStoreUserDefaults.m in Sources */,
 				E4EDC5A416820D9500BD3CA9 /* IASKSettingsStoreFile.m in Sources */,
 				E4EDC5A516820D9500BD3CA9 /* IASKPSSliderSpecifierViewCell.m in Sources */,
@@ -693,6 +753,10 @@
 				E42ADAB3168202D700295D85 /* IASSettingsStoreUserDefaultsTests.m in Sources */,
 				E4EDC5AD16821D7300BD3CA9 /* IASKAbstractStoreTests.m in Sources */,
 				E4EDC5AF1682216700BD3CA9 /* IASKFileStoreTests.m in Sources */,
+				292BA29D2344F2B20002E70E /* DCRoundSwitch.m in Sources */,
+				292BA29A2344F2B20002E70E /* DCRoundSwitchToggleLayer.m in Sources */,
+				292BA2972344F2B20002E70E /* DCRoundSwitchKnobLayer.m in Sources */,
+				292BA2922344F2B20002E70E /* DCRoundSwitchOutlineLayer.m in Sources */,
 				E4EDC5B2168227B800BD3CA9 /* IASKSettingsReaderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

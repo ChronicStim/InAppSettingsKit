@@ -39,6 +39,7 @@
 #define kIASKValues                           @"Values"
 #define kIASKTitles                           @"Titles"
 #define kIASKIconNames                        @"IconNames"
+#define kIASKSubtitles                        @"Subtitles"
 #define kIASKShortTitles                      @"ShortTitles"
 #define kIASKSupportedUserInterfaceIdioms     @"SupportedUserInterfaceIdioms"
 #define kIASKSubtitle                         @"IASKSubtitle"
@@ -118,12 +119,13 @@
 #endif
 #define kIASKPaddingRight                     10
 #define kIASKHorizontalPaddingGroupTitles     19
-#define kIASKVerticalPaddingGroupTitles       5
+#define kIASKVerticalPaddingGroupTitles       8
 
 #define kIASKLabelFontSize                    17
 #define kIASKgrayBlueColor                    [UIColor colorWithRed:0.318f green:0.4f blue:0.569f alpha:1.f]
 
 #define kIASKMinimumFontSize                  12.0f
+#define kIASKMinimumScaleFactor               0.5f
 
 #ifndef kCFCoreFoundationVersionNumber_iOS_7_0
 #define kCFCoreFoundationVersionNumber_iOS_7_0 843.00

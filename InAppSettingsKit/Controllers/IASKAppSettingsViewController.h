@@ -105,4 +105,5 @@ shouldPresentMailComposeViewController:(MFMailComposeViewController*)mailCompose
 - (void)synchronizeSettings;
 - (IBAction)dismiss:(id)sender;
 - (void)setHiddenKeys:(NSSet*)hiddenKeys animated:(BOOL)animated;
+- (UITableViewCell*)tableView:(UITableView *)tableView newCellForSpecifier:(IASKSpecifier*)specifier;
 @end

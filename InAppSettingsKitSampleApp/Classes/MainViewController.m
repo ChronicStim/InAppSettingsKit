@@ -40,6 +40,8 @@
 		appSettingsViewController = [[IASKAppSettingsViewController alloc] init];
         appSettingsViewController.cellLayoutMarginsFollowReadableWidth = NO;
 		appSettingsViewController.delegate = self;
+        appSettingsViewController.showDoneButton = NO;
+        appSettingsViewController.showCreditsFooter = NO;
 		BOOL enabled = [[NSUserDefaults standardUserDefaults] boolForKey:@"AutoConnect"];
 		appSettingsViewController.hiddenKeys = enabled ? nil : [NSSet setWithObjects:@"AutoConnectLogin", @"AutoConnectPassword", nil];
 	}

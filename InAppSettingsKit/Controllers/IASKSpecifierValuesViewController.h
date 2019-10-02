@@ -20,9 +20,14 @@
 
 @class IASKSpecifier;
 @class IASKSettingsReader;
+@class IASKMultipleValueSelection;
 
 @interface IASKSpecifierValuesViewController : UITableViewController <IASKViewController>
+{
+	IASKSettingsReader		*_settingsReader;
+}
 
 @property (nonatomic, strong) IASKSpecifier *currentSpecifier;
+@property (nonatomic, strong, readonly) IASKMultipleValueSelection *selection;
 
 @end

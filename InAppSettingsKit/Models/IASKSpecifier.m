@@ -59,12 +59,14 @@
 - (void)updateMultiValuesDict {
     NSArray *values = [_specifierDict objectForKey:kIASKValues];
     NSArray *titles = [_specifierDict objectForKey:kIASKTitles];
+
 	[self setMultipleValuesDictValues:values titles:titles];
 }
 
 - (void)setMultipleValuesDictValues:(NSArray*)values titles:(NSArray*)titles {
     NSArray *shortTitles = [_specifierDict objectForKey:kIASKShortTitles];
     NSArray *iconNames = [_specifierDict objectForKey:kIASKIconNames];
+    NSArray *subtitles = [_specifierDict objectForKey:kIASKSubtitles];
     NSMutableDictionary *multipleValuesDict = [NSMutableDictionary new];
    
     if (values) {
@@ -75,6 +77,10 @@
         [multipleValuesDict setObject:titles forKey:kIASKTitles];
     }
 
+    if (subtitles.count) {
+        [multipleValuesDict setObject:subtitles forKey:kIASKSubtitles];
+    }
+    
     if (shortTitles.count) {
         [multipleValuesDict setObject:shortTitles forKey:kIASKShortTitles];
     }
@@ -92,6 +98,7 @@
         NSArray *titles = self.multipleTitles ?: [_specifierDict objectForKey:kIASKTitles];
         NSArray *shortTitles = self.multipleShortTitles ?: [_specifierDict objectForKey:kIASKShortTitles];
         NSArray *iconNames = self.multipleIconNames ?: [_specifierDict objectForKey:kIASKIconNames];
+        NSArray *subtitles = self.multipleSubtitles ?: [_specifierDict objectForKey:kIASKSubtitles];
 
         NSAssert(values.count == titles.count, @"Malformed multi-value specifier found in settings bundle. Number of values and titles differ.");
         NSAssert(shortTitles == nil || shortTitles.count == values.count, @"Malformed multi-value specifier found in settings bundle. Number of short titles and values differ.");
@@ -105,6 +112,7 @@
         static NSString *const shortTitleKey = @"shortTitle";
         static NSString *const localizedTitleKey = @"localizedTitle";
         static NSString *const iconNamesKey = @"iconNamesKey";
+        static NSString *const subTitleKey = @"subTitleKey";
         static NSString *const valueKey = @"value";
 
         IASKSettingsReader *strongSettingsReader = self.settingsReader;
@@ -115,6 +123,7 @@
                                                   localizedTitleKey : localizedTitle,
                                                   shortTitleKey : (shortTitles[idx] ?: [NSNull null]),
                                                   iconNamesKey : (iconNames[idx] ?: [NSNull null]),
+												  subTitleKey : (subtitles[idx] ?: [NSNull null]),
                                                   }];
         }];
         
@@ -133,6 +142,7 @@
         NSMutableArray *sortedShortTitles = [NSMutableArray arrayWithCapacity:sortedTemporaryMappings.count];
         NSMutableArray *sortedValues = [NSMutableArray arrayWithCapacity:sortedTemporaryMappings.count];
         NSMutableArray *sortedIconNames = [NSMutableArray arrayWithCapacity:sortedTemporaryMappings.count];
+        NSMutableArray *sortedSubTitles = [NSMutableArray arrayWithCapacity:sortedTemporaryMappings.count];
 
         [sortedTemporaryMappings enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             NSDictionary *mapping = obj;
@@ -144,11 +154,17 @@
             if (mapping[iconNamesKey] != [NSNull null]) {
                 sortedIconNames[idx] = (id)mapping[iconNamesKey];
             }
+			if (mapping[subTitleKey] != [NSNull null]) {
+				sortedSubTitles[idx] = (id)mapping[subTitleKey];
+			} else {
+				sortedSubTitles[idx] = @"";
+			}
         }];
         titles = [sortedTitles copy];
         values = [sortedValues copy];
         shortTitles = [sortedShortTitles copy];
-        iconNames = [iconNames copy];
+        iconNames = [sortedIconNames copy];
+		subtitles = [sortedSubTitles copy];
         
         if (values) {
             [multipleValuesDict setObject:values forKey:kIASKValues];
@@ -165,6 +181,10 @@
         if (iconNames.count) {
             [multipleValuesDict setObject:iconNames forKey:kIASKIconNames];
         }
+		
+		if (subtitles.count) {
+			[multipleValuesDict setObject:subtitles forKey:kIASKSubtitles];
+		}
 
         [self setMultipleValuesDict:multipleValuesDict];
     }
@@ -268,6 +288,26 @@
 	return nil;
 }
 
+- (NSString*)subtitleForCurrentValue:(id)currentValue;
+{
+    NSArray *values = [self multipleValues];
+    NSArray *subtitles = [self multipleSubtitles];
+    
+    if (values.count != subtitles.count) {
+        return nil;
+    }
+    NSInteger keyIndex = [values indexOfObject:currentValue];
+    if (keyIndex == NSNotFound) {
+        return nil;
+    }
+    @try {
+        IASKSettingsReader *strongSettingsReader = self.settingsReader;
+        return [strongSettingsReader titleForId:[subtitles objectAtIndex:keyIndex]];
+    }
+    @catch (NSException * e) {}
+    return nil;
+}
+
 - (NSInteger)multipleValuesCount {
     return [[_multipleValuesDict objectForKey:kIASKValues] count];
 }
@@ -282,6 +322,11 @@
 
 - (NSArray *)multipleIconNames {
     return [_multipleValuesDict objectForKey:kIASKIconNames];
+}
+
+- (NSArray*)multipleSubtitles;
+{
+    return [_multipleValuesDict objectForKey:kIASKSubtitles];
 }
 
 - (NSArray*)multipleShortTitles {

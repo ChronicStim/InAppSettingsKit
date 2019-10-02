@@ -40,10 +40,12 @@
 - (NSString*)key;
 - (NSString*)type;
 - (NSString*)titleForCurrentValue:(id)currentValue;
+- (NSString*)subtitleForCurrentValue:(id)currentValue;
 - (NSInteger)multipleValuesCount;
 - (NSArray*)multipleValues;
 - (NSArray*)multipleTitles;
 - (NSArray *)multipleIconNames;
+- (NSArray*)multipleSubtitles;
 - (NSString*)file;
 - (id)defaultValue;
 - (id)defaultStringValue;
@@ -74,4 +76,5 @@
 - (NSTextAlignment)textAlignment;
 - (NSArray *)userInterfaceIdioms;
 - (NSString *)radioGroupValue;
+
 @end
